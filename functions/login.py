@@ -1,7 +1,8 @@
 from passlib.hash import md5_crypt
 import requests
 
-from config import DATABASE_URL, SALT, USER_FIRST_NAME, USER_TOKEN, USER_POSITION
+from config import DATABASE_URL, SALT
+from user import USER
 
 def hash_password(password: str) -> str:
     "Хеширование пароля"
@@ -15,14 +16,12 @@ def login(username:str, password:str):
             }
     req = requests.post(url, json = values)
 
-    #print("server: ", url)
-    #print("send json: ", values)
-    #print("server answer: ", req.text)
-    
     if  "error" in req.text:
         return  False, req.json()["error"]
     if req.json()["message"] == "Вы успешно вошли в систему":
-        USER_FIRST_NAME = req.json()["first_name"]
-        USER_POSITION = req.json()["position"]
-        USER_TOKEN = req.json()["token"]
+        USER.first_name  = req.json()["first_name"]
+        USER.second_name = req.json()["second_name"]
+        USER.position    = req.json()["position"]
+        USER.token       = req.json()["token"]
+        USER.admin       = req.json()["admin"]
         return True, req.json()

@@ -1,7 +1,7 @@
 from kivy.uix.screenmanager import Screen
-
-from config import USER_FIRST_NAME, USER_TOKEN
+from user import USER
+from functions import get_hello_start 
 
 class MainScreen(Screen):
     def on_enter(self):
-        self.ids.hello.text = "Добрый " +  USER_FIRST_NAME 
+        self.ids.hello.text = get_hello_start() +  USER.first_name + '.'
