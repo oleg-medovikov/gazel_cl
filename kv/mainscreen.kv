@@ -1,7 +1,27 @@
 <MainScreen>:
     BoxLayout:
         orientation: 'vertical'
-        Label:
-            id: hello
-            text: "Hello"
-            font_size: '0.5cm'
+		spacing: '1.5cm'
+		padding: '1cm'
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: '2cm'
+			Label:
+				id: hello
+				text: "Hello"
+				font_size: '0.5cm'
+
+		BoxLayout:
+			orientation: 'horizontal'
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: '1.5cm'
+			Button:
+				id: logout
+				size_hint_x: None
+				width: '4cm'
+				text: 'Выйти'
+				on_press: root.logout()

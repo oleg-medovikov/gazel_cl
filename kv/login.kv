@@ -26,7 +26,8 @@
 			multiline:False
 			hint_text:"Username"
 			size_hint: None,None
-			size_hint_x: 1
+			size_hint_x: None
+			width: '8cm'
 			height:'1.5cm'
 			font_size:'0.635cm'
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -36,29 +37,35 @@
 			id: password
 			multiline:False
 			size_hint: None,None
-			size_hint_x: 1
+			size_hint_x: None
+			width: '8cm'
 			height:'1.5cm'
 			hint_text:"Password"
 			font_size:'0.635cm'
 			password:True
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
-
 
 		Button:
 			size_hint: None,None
-			size_hint_x: 1
+			size_hint_x: None
+			width: '8cm'
 			height:'1.5cm'
-			text:'Log In'
+			text:'Войти'
 			font_size:'0.635cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			on_press: root.try_log_in() 
 
 		BoxLayout:
 			orientation:'horizontal'
+			size_hint_x: None
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			width: '8cm'
 			Label:
 				text:'Разработано '
 				font_size:'0.32cm'
 				halign:'left'
 			Label:
 				text:'Медовиков О.Е.'
-				font_size:'0.56cm'
+				font_size:'0.45cm'
 				color:0,1,1,1

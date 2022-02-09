@@ -2,7 +2,7 @@ from passlib.hash import md5_crypt
 import requests
 
 from config import DATABASE_URL, SALT
-from user import USER
+from value import USER
 
 def hash_password(password: str) -> str:
     "Хеширование пароля"
