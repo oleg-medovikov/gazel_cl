@@ -1,0 +1,25 @@
+<UsersUI>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: cm(0.5)
+		padding: cm(1.5)
+		Label:
+			size_hint_y: None
+			height: cm(1.5)
+			text: "Существующие в системе пользователи"
+			font_size: cm(0.5)
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: cm(3.5)
+			padding: cm(1)
+			spacing: cm(1)
+			Button:
+				id: back
+				text: 'назад'
+				on_press: root.return_main()
+			Button:
+				id: new_user
+				text: 'Создать'
+				on_press: root.add_user()
+				

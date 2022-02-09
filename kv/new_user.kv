@@ -1,0 +1,96 @@
+<NewUserUI>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: cm(0.5)
+		padding_horizontal: cm(1)
+		Label:
+			id: message
+			size_hint_y: None
+			height: cm(2)
+			text: "Задайте данные нового пользователя"
+			font_size: cm(0.5)
+
+		TextInput:
+			id: username
+			multiline:False
+			hint_text:"Username"
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
+		
+		TextInput:
+			id: password1
+			multiline:False
+			hint_text: 'Пароль'
+			password: True
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
+		TextInput:
+			id: password2
+			multiline:False
+			hint_text: 'Повторите пароль'
+			password: True
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
+		TextInput:
+			id: first_name
+			multiline:False
+			hint_text: "Имя Отчество"
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
+		TextInput:
+			id: second_name
+			multiline:False
+			hint_text: "Фамилия"
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
+		TextInput:
+			id: position
+			multiline:False
+			hint_text: "Должность"
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: cm(3.5)
+			padding: cm(1)
+			spacing: cm(1)
+			Button:
+				id: back
+				text: 'назад'
+				on_press: root.return_users()
+			Button:
+				id: new_user
+				text: 'Создать'
+				on_press: root.add_user()
+	

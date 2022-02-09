@@ -1,8 +1,8 @@
 <MainScreen>:
     BoxLayout:
         orientation: 'vertical'
-		spacing: '1.5cm'
-		padding: '1cm'
+		spacing: cm(1.5)
+		padding_horizontal: cm(1)
 		BoxLayout:
 			orientation: 'horizontal'
 			size_hint_y: None
@@ -18,10 +18,14 @@
 		BoxLayout:
 			orientation: 'horizontal'
 			size_hint_y: None
-			height: '1.5cm'
+			height: cm(3.5)
+			padding: cm(1)
+			spacing: cm(1)
 			Button:
 				id: logout
-				size_hint_x: None
-				width: '4cm'
 				text: 'Выйти'
 				on_press: root.logout()
+			Button:
+				id: users
+				text: 'Пользователи'
+				on_press: root.see_users()

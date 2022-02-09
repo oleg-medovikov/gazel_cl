@@ -9,3 +9,7 @@ class MainScreen(Screen):
     def logout(self):
         self.manager.transition.direction = 'right'
         self.manager.current = 'LoginUI'
+
+    def see_users(self):
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'UsersUI'
