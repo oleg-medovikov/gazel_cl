@@ -34,7 +34,7 @@ class NewUserUI(Screen):
             new_user.second_name = self.ids.second_name.text
             new_user.username = self.ids.username.text
             new_user.password_hash = self.ids.password1.text
-            new_user.position = self.ids.first_name.text
+            new_user.position = self.ids.position.text
             new_user.admin = False
             
             res = create_user(new_user)
