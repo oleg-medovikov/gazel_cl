@@ -5,10 +5,16 @@
 		padding_horizontal: cm(1)
 		Label:
 			id: message
+			text: "Задайте данные нового пользователя"
 			size_hint_y: None
 			height: cm(2)
-			text: "Задайте данные нового пользователя"
+			size_hint_x: None
+			width: cm(8)
 			font_size: cm(0.5)
+			text_size: cm(8),cm(4)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			halign: 'center'
+			valign: 'middle'
 
 		TextInput:
 			id: username

@@ -3,7 +3,7 @@ from uuid import UUID
 
 class User():
     first_name : StringProperty('')
-    secon_name : StringProperty('')
+    second_name : StringProperty('')
     username : StringProperty('')
     password_hash : StringProperty('')
     position : StringProperty('')
@@ -12,3 +12,5 @@ class User():
 
  
 USER = User()
+
+VIEW_USER = User()

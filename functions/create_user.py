@@ -19,9 +19,7 @@ def create_user(new_user: User):
     req = requests.post(url, json = values)
     print(req.text)
     
-
-    return True, req.text
-    #if "error" in req.text:
-    #    return False, req.json()["error"]
-    #else:
-    #    return True, req.json()
+    if "error" in req.text:
+        return False, req.json()["error"]
+    else:
+        return True, req.json()["message"]

@@ -1,0 +1,27 @@
+<ViewUserUI>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: cm(1.5)
+		padding_horizontal: cm(1.5)
+		Label:
+			id: description
+			font_size: cm(0.635)
+			size_hint_x: None
+			width: cm(8)
+			text_size: cm(8), cm(12)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			halign: "center"
+			valign: "middle"
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: cm(3.5)
+			padding: cm(1)
+			spacing: cm(1)
+			Button:
+				id: back
+				text: 'назад'
+				on_press: root.return_users()
+	
+

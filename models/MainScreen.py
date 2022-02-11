@@ -4,6 +4,7 @@ from functions import get_hello_start
 
 class MainScreen(Screen):
     def on_enter(self):
+        print(USER.token)
         self.ids.hello.text = get_hello_start() +  USER.first_name + '.'
 
     def logout(self):
