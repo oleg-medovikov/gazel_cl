@@ -1,17 +1,51 @@
 <ViewUserUI>:
 	BoxLayout:
 		orientation: 'vertical'
-		spacing: cm(1.5)
+		spacing: cm(.25)
 		padding_horizontal: cm(1.5)
 		Label:
 			id: description
-			font_size: cm(0.635)
+			font_size: cm(0.6)
 			size_hint_x: None
 			width: cm(8)
 			text_size: cm(8), cm(12)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			halign: "left"
+		
+		Label:
+			id: error
+			font_size: cm(0.5)
+			size_hint_x: None
+			width: cm(8)
+			text_size: cm(8), cm(4)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: "center"
 			valign: "middle"
+
+		TextInput:
+			id: password1
+			multiline:False
+			hint_text: 'Новый пароль'
+			password: True
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
+		TextInput:
+			id: password2
+			multiline:False
+			hint_text: 'Повторите пароль'
+			password: True
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
 
 		BoxLayout:
 			orientation: 'horizontal'
@@ -23,5 +57,10 @@
 				id: back
 				text: 'назад'
 				on_press: root.return_users()
+			Button:
+				id: new_pass
+				text: 'Обновить пароль'
+				on_press: root.update_password()
 	
+
 

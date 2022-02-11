@@ -12,12 +12,26 @@ class ViewUserUI(Screen):
         else:
             admin = 'Является обычным пользователем'
         
-        text = f"""Информация о пользователе: \n{VIEW_USER.username},
-        \n {VIEW_USER.second_name} {VIEW_USER.first_name}
-        \n Находится в должности: \n {VIEW_USER.position}.
-        \n {admin}
-        """
+        text = f"""Пользователь:
+{VIEW_USER.username}
+———————————————
+ФИО:
+{VIEW_USER.second_name} {VIEW_USER.first_name}
+———————————————
+Должность:
+{VIEW_USER.position}
+———————————————
+{admin}"""
+
         self.ids.description.text = text
+
+    def update_password(self):
+        if self.ids.password1.test != "" :
+            self.ids.error.text = "Введите новый пароль!"
+        elif self.ids.password1.test != self.ids.password2.text:
+            self.ids.error.text = "Пароли не совпадают!"
+        else:
+            res = password_update(self.ids.password1.text)
 
     def return_users(self):
         self.manager.transition.direction = 'right'
