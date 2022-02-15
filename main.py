@@ -5,12 +5,24 @@ from kivy.lang import Builder
 
 from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI 
 
+
+# На смлучай если есть прокси ======
+import httplib2
+pi = httplib2.proxy_info_from_environment()
+if pi:
+    import socks
+    socks.setdefaultproxy(pi.proxy_type, pi.proxy_host, pi.proxy_port)
+    socks.wrapmodule(httplib2)
+
+httplib2.Http()
+#====================================
+
 Builder.load_string(f"""
-{open('kv/login.kv', 'r').read()}
-{open('kv/mainscreen.kv', 'r').read()}
-{open('kv/users.kv', 'r').read()}
-{open('kv/new_user.kv', 'r').read()}
-{open('kv/view_user.kv', 'r').read()}
+{open('kv/login.kv', 'r', encoding='utf-8').read()}
+{open('kv/mainscreen.kv', 'r', encoding='utf-8').read()}
+{open('kv/users.kv', 'r', encoding='utf-8').read()}
+{open('kv/new_user.kv', 'r', encoding='utf-8').read()}
+{open('kv/view_user.kv', 'r', encoding='utf-8').read()}
 """)
 
 
@@ -28,4 +40,5 @@ class Gazel_cl(App):
 if __name__ == '__main__':
     app = Gazel_cl()
     Window.size=(400,700)
+    Window.fullscreen = False
     app.run()
