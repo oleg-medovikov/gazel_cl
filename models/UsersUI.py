@@ -23,7 +23,8 @@ class UsersUI(Screen):
             self.ids.users_grid.add_widget(button)
 
     def view_user(self,instance):
-        print(instance.text)
+        "нажатие на кнопку с именем пользователя"
+        #print(instance.text)
         user_info(instance.text)
         self.manager.transition.direction = 'left'
         self.manager.current = 'ViewUserUI'
