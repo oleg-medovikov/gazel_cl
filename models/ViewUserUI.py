@@ -1,5 +1,6 @@
 from kivy.uix.screenmanager import Screen
 
+from functions import update_password
 from value import VIEW_USER 
 
 class ViewUserUI(Screen):
@@ -24,14 +25,19 @@ class ViewUserUI(Screen):
 {admin}"""
 
         self.ids.description.text = text
+        
+        self.ids.error.text = ""
+        self.ids.password1.text = ""
+        self.ids.password2.text = ""
 
-    def update_password(self):
-        if self.ids.password1.test != "" :
+    def password_update(self):
+        if self.ids.password1.text == "" :
             self.ids.error.text = "Введите новый пароль!"
-        elif self.ids.password1.test != self.ids.password2.text:
+        elif self.ids.password1.text != self.ids.password2.text:
             self.ids.error.text = "Пароли не совпадают!"
         else:
-            res = password_update(self.ids.password1.text)
+            res = update_password(self.ids.password1.text)
+            self.ids.error.text = res
 
     def return_users(self):
         self.manager.transition.direction = 'right'

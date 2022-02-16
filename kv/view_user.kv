@@ -20,7 +20,7 @@
 			text_size: cm(8), cm(4)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: "center"
-			valign: "middle"
+			valign: "bottom"
 
 		TextInput:
 			id: password1
@@ -60,7 +60,7 @@
 			Button:
 				id: new_pass
 				text: 'Обновить пароль'
-				on_press: root.update_password()
+				on_press: root.password_update()
 	
 
 
