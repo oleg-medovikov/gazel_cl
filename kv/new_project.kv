@@ -1,0 +1,59 @@
+<NewProjectUI>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: cm(0.5)
+		padding_horizontal: cm(1)
+		Label:
+			id: message
+			text: "Задайте имя нового проекта"
+			size_hint_y: None
+			height: cm(2)
+			size_hint_x: None
+			width: cm(8)
+			font_size: cm(0.5)
+			text_size: cm(8),cm(4)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			halign: 'center'
+			valign: 'middle'
+
+		BoxLayout:
+
+		TextInput:
+			id: project_name
+			multiline:False
+			hint_text:"Имя проекта"
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'1.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+		
+		TextInput:
+			id: description
+			multiline: True
+			hint_text:"Описание проекта"
+			size_hint: None,None
+			size_hint_x: None
+			width: '8cm'
+			height:'4.5cm'
+			font_size:'0.6cm'
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			
+		BoxLayout:
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: cm(3.5)
+			padding: cm(1)
+			spacing: cm(1)
+			Button:
+				id: back
+				text: 'назад'
+				on_press: root.return_main()
+			Button:
+				id: new_user
+				text: 'Создать'
+				on_press: root.add_project()
+	

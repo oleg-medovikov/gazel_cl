@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import Screen
 from value import USER
-from functions import get_hello_start, projects_list
+from functions import get_hello_start, projects_list, project_info
 
 from kivy.uix.button import Button
 
@@ -36,11 +36,14 @@ class MainScreen(Screen):
 
     def view_project(self,instance):
         "нажатие на кнопку с именем проекта"
-        pass
+        project_info(instance.text)
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'ProjectUI'
 
     def add_project(self,instance):
         "нажатие на кнопку добавления проекта"
-        pass
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'NewProjectUI'
 
     def logout(self):
         self.manager.transition.direction = 'right'

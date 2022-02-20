@@ -3,8 +3,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.lang import Builder
 
-from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI 
-
+from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI, NewProjectUI
+from models import ProjectUI
 
 # На смлучай если есть прокси ======
 import httplib2
@@ -18,22 +18,26 @@ httplib2.Http()
 #====================================
 
 Builder.load_string(f"""
-{open('kv/login.kv', 'r', encoding='utf-8').read()}
-{open('kv/mainscreen.kv', 'r', encoding='utf-8').read()}
-{open('kv/users.kv', 'r', encoding='utf-8').read()}
-{open('kv/new_user.kv', 'r', encoding='utf-8').read()}
-{open('kv/view_user.kv', 'r', encoding='utf-8').read()}
+{open('kv/login.kv',       'r',  encoding='utf-8').read()}
+{open('kv/mainscreen.kv',  'r',  encoding='utf-8').read()}
+{open('kv/users.kv',       'r',  encoding='utf-8').read()}
+{open('kv/new_user.kv',    'r',  encoding='utf-8').read()}
+{open('kv/view_user.kv',   'r',  encoding='utf-8').read()}
+{open('kv/new_project.kv', 'r',  encoding='utf-8').read()}
+{open('kv/project.kv',   'r',  encoding='utf-8').read()}
 """)
 
 
 class Gazel_cl(App):
     def build(self):
         sm = ScreenManager()
-        sm.add_widget(LoginUI(name = 'LoginUI'))
-        sm.add_widget(MainScreen(name = 'MainScreen'))
-        sm.add_widget(UsersUI(name = 'UsersUI'))
-        sm.add_widget(NewUserUI(name = 'NewUserUI'))
-        sm.add_widget(ViewUserUI(name = 'ViewUserUI'))
+        sm.add_widget(LoginUI       (name = 'LoginUI'))
+        sm.add_widget(MainScreen    (name = 'MainScreen'))
+        sm.add_widget(UsersUI       (name = 'UsersUI'))
+        sm.add_widget(NewUserUI     (name = 'NewUserUI'))
+        sm.add_widget(ViewUserUI    (name = 'ViewUserUI'))
+        sm.add_widget(NewProjectUI  (name = 'NewProjectUI'))
+        sm.add_widget(ProjectUI     (name = 'ProjectUI'))
         return sm
     
     

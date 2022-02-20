@@ -15,9 +15,10 @@ def create_user(new_user: User):
 
     url = DATABASE_URL + 'new_user'
     values = new_user.__dict__
-    print(values)
     req = requests.post(url, json = values)
-    print(req.text)
+
+    #print(values)
+    #print(req.text)
     
     if "error" in req.text:
         return False, req.json()["error"]

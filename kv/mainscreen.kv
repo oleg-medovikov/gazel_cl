@@ -4,12 +4,15 @@
 		spacing: cm(1.5)
 		padding_horizontal: cm(1)
 		BoxLayout:
-			orientation: 'horizontal'
+			orientation: 'vertical'
 			size_hint_y: None
-			height: '2cm'
+			height: '4cm'
+			padding_horizontal: cm(1)
 			Label:
 				id: hello
-				text: "Hello"
+				font_size: '0.5cm'
+			Label:
+				text: "Выберите из доступных проектов:"
 				font_size: '0.5cm'
 
 		ScrollView:

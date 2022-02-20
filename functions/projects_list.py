@@ -6,5 +6,11 @@ from value import USER
 
 
 def projects_list() -> list:
+    url = DATABASE_URL + 'allow_projects'
 
-    return ["1","2","3"]
+    req = requests.post(url, json= {"token": USER.token })
+    
+    if not "error" in req.text:
+        return req.json()
+    else:
+        return []
