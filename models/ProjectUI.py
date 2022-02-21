@@ -13,4 +13,5 @@ class ProjectUI(Screen):
         self.manager.current = 'MainScreen'
 
     def view_team(self):
-        pass
+        self.manager.transition.direction = 'up'
+        self.manager.current = 'ProjectTeamUI'
