@@ -1,7 +1,7 @@
 from kivy.uix.screenmanager import Screen
 
 from kivy.uix.button import Button
-from functions import project_team_users
+from functions import project_team_users, users_list
 from value import VIEW_PROJECT
 
 class ProjectTeamUI(Screen):
@@ -11,12 +11,18 @@ class ProjectTeamUI(Screen):
         in_team = project_team_users (VIEW_PROJECT.p_name)
         
         self.update_users_in_team(in_team)
+        users = users_list()
+        for user in users:
+            if user in in_team:
+                users.remove(user)
 
-    def update_users_in_team(self, in_team: list):
+        self.update_users_out_team(users)
+
+
+    def update_users_in_team(self, in_team : list):
         "обновляет список юзеров в проекте"
         self.ids.users_in_team.clear_widgets()
         for user in in_team:
-            print(user)
             button = Button(
                     text = str(user),
                     background_color = (0.32,0.32,0.32,1),
@@ -25,10 +31,22 @@ class ProjectTeamUI(Screen):
                     )
             self.ids.users_in_team.add_widget(button)
 
-    def update_users_out_team(self):
-        pass
+    def update_users_out_team(self, out_team : list):
+        "Обновляет список юзеров вне проекта"
+        self.ids.users_out_team.clear_widgets()
+        for user in out_team:
+            button = Button(
+                    text = str(user),
+                    background_color = (0.32,0.32,0.32,1),
+                    font_size = '0.635cm',
+                    on_press = self.view_out_team_user
+                    )
+            self.ids.users_out_team.add_widget(button)
 
     def view_team_user(self,instance):
+        pass
+
+    def view_out_team_user(self,instance):
         pass
 
     def return_project(self):
