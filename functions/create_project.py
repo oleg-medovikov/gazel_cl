@@ -8,8 +8,10 @@ def create_project(new_project : Project):
 
     url = DATABASE_URL + 'create_project'
 
-    values = new_project.__dict__
-    req = requests.post(url, json = values)
+    values = {"p_name" : new_project.p_name,
+              "p_description" : new_project.p_description
+            }
+    req = requests.get(url, headers = {"token" : USER.token} , json = values)
 
     #print(values)
     #print(req.text)

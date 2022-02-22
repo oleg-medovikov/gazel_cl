@@ -1,8 +1,8 @@
 from kivy.uix.screenmanager import Screen
 
 from kivy.uix.button import Button
-from functions import project_team_users, users_list
-from value import VIEW_PROJECT
+from functions import project_team_users, users_list, user_info
+from value import VIEW_PROJECT 
 
 class ProjectTeamUI(Screen):
     """Окно для редактирования пользователей
@@ -47,7 +47,10 @@ class ProjectTeamUI(Screen):
         pass
 
     def view_out_team_user(self,instance):
-        pass
+        "Переход на окно добавления пользователя в команду"
+        user_info(instance.text)
+        self.manager.transition.direction = "left"
+        self.manager.current = 'AddTeamUserUI'
 
     def return_project(self):
         self.manager.transition.direction = 'down'

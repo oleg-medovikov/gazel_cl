@@ -14,3 +14,4 @@ class User():
 USER = User()
 
 VIEW_USER = User()
+

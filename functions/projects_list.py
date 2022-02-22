@@ -8,7 +8,7 @@ from value import USER
 def projects_list() -> list:
     url = DATABASE_URL + 'allow_projects'
 
-    req = requests.post(url, json= {"token": USER.token })
+    req = requests.get(url, headers= {"token": USER.token })
     
     if not "error" in req.text:
         return req.json()

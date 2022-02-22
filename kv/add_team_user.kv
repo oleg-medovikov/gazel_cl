@@ -1,0 +1,69 @@
+<AddTeamUserUI>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: cm(0.5)
+		padding_horizontal: cm(1)
+		Label:
+			id: description
+			font_size: cm(0.5)
+			size_hint_x: None
+			width: cm(8)
+			text_size: cm(8), cm(10)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			halign: "left"
+		
+		Label:
+			text: "Выставьте уровень прав"
+			size_hint_y: None
+			height: cm(2)
+			size_hint_x: None
+			width: cm(8)
+			font_size: cm(0.5)
+			text_size: cm(8),cm(2)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			halign: 'center'
+			valign: 'middle'
+	
+
+		Slider:
+			id: slider
+			min: 0
+			max: 3
+			step: 1
+			orientation: 'horizontal'
+			size_hint: None,None
+			size_hint_x: None
+			width: cm(8)
+			height: cm(1)
+			font_size: cm(0.5)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			padding : self.height/2 - self.font_size/2
+
+			on_touch_move: root.slider_value_change(slider.value)
+		Label:
+			id: access
+			size_hint_y: None
+			height: cm(2)
+			size_hint_x: None
+			width: cm(8)
+			font_size: cm(0.5)
+			text_size: cm(8),cm(4)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			halign: 'center'
+			valign: 'middle'
+	
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: cm(3.5)
+			padding: cm(1)
+			spacing: cm(1)
+			Button:
+				id: back
+				text: 'назад'
+				on_press: root.return_project_team()
+			Button:
+				id: add_user
+				text: 'в команду'
+				on_press: root.add_user_to_team()
+

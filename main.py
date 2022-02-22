@@ -4,7 +4,7 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 
 from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI, NewProjectUI
-from models import ProjectUI, ProjectTeamUI
+from models import ProjectUI, ProjectTeamUI, AddTeamUserUI
 
 # На смлучай если есть прокси ======
 import httplib2
@@ -18,14 +18,15 @@ httplib2.Http()
 #====================================
 
 Builder.load_string(f"""
-{open('kv/login.kv',        'r',  encoding='utf-8').read()}
-{open('kv/mainscreen.kv',   'r',  encoding='utf-8').read()}
-{open('kv/users.kv',        'r',  encoding='utf-8').read()}
-{open('kv/new_user.kv',     'r',  encoding='utf-8').read()}
-{open('kv/view_user.kv',    'r',  encoding='utf-8').read()}
-{open('kv/new_project.kv',  'r',  encoding='utf-8').read()}
-{open('kv/project.kv',      'r',  encoding='utf-8').read()}
-{open('kv/project_team.kv', 'r',  encoding='utf-8').read()}
+{open('kv/login.kv',         'r',  encoding='utf-8').read()}
+{open('kv/mainscreen.kv',    'r',  encoding='utf-8').read()}
+{open('kv/users.kv',         'r',  encoding='utf-8').read()}
+{open('kv/new_user.kv',      'r',  encoding='utf-8').read()}
+{open('kv/view_user.kv',     'r',  encoding='utf-8').read()}
+{open('kv/new_project.kv',   'r',  encoding='utf-8').read()}
+{open('kv/project.kv',       'r',  encoding='utf-8').read()}
+{open('kv/project_team.kv',  'r',  encoding='utf-8').read()}
+{open('kv/add_team_user.kv', 'r',  encoding='utf-8').read()}
 """)
 
 
@@ -40,6 +41,7 @@ class Gazel_cl(App):
         sm.add_widget(NewProjectUI  (name = 'NewProjectUI'))
         sm.add_widget(ProjectUI     (name = 'ProjectUI'))
         sm.add_widget(ProjectTeamUI (name = 'ProjectTeamUI'))
+        sm.add_widget(AddTeamUserUI (name = 'AddTeamUserUI'))
         return sm
     
     
