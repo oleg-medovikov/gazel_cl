@@ -19,7 +19,7 @@ def update_password(password : str):
             "username" : VIEW_USER.username,
             "password_hash" : hash_password(password) 
             }
-    req = requests.post(url, json = json)
+    req = requests.put(url, json = json)
 
     if "error" in req.text:
         return req.json()["error"]

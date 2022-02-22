@@ -8,7 +8,7 @@ from value import USER
 def users_list() -> list:
     url = DATABASE_URL + 'users_list'
 
-    req = requests.post(url, json= {"token": USER.token })
+    req = requests.get(url, headers= {"token": USER.token })
 
     if not "error" in req.text:
         list_ = []

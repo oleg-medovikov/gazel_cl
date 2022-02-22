@@ -11,7 +11,7 @@ def user_info(username : str):
             "token" : USER.token,
             "username" : username
             }
-    req = requests.post(url, json = json)
+    req = requests.get(url, headers = json)
     
     if not "error" in req.text:
         res = req.json()
