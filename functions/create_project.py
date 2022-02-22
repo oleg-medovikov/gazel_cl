@@ -11,7 +11,7 @@ def create_project(new_project : Project):
     values = {"p_name" : new_project.p_name,
               "p_description" : new_project.p_description
             }
-    req = requests.get(url, headers = {"token" : USER.token} , json = values)
+    req = requests.post(url, headers = {"token" : USER.token} , json = values)
 
     #print(values)
     #print(req.text)
