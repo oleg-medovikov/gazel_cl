@@ -2,13 +2,13 @@ import requests
 
 from config import DATABASE_URL
 
-from value import USER
+from value import HEADERS
 
 
 def users_list() -> list:
     url = DATABASE_URL + 'users_list'
 
-    req = requests.get(url, headers= {"token": USER.token })
+    req = requests.get(url, headers = HEADERS )
 
     if not "error" in req.text:
         list_ = []

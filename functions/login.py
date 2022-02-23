@@ -2,7 +2,7 @@ from passlib.hash import md5_crypt
 import requests
 
 from config import DATABASE_URL, SALT
-from value import USER
+from value import USER, HEADERS
 
 def hash_password(password: str) -> str:
     "Хеширование пароля"
@@ -22,6 +22,7 @@ def login(username:str, password:str):
         USER.first_name  = req.json()["first_name"]
         USER.second_name = req.json()["second_name"]
         USER.position    = req.json()["position"]
-        USER.token       = req.json()["token"]
         USER.admin       = req.json()["admin"]
+
+        HEADERS["Authorization"] = req.json()["token"]
         return True, req.json()
