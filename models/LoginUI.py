@@ -2,6 +2,7 @@ from kivy.uix.screenmanager import Screen
 
 from functions import login
 from config import DEFAULT_USERNAME
+from value import to_latin
 
 class LoginUI(Screen):
     "Класс первого окна входа"
@@ -10,6 +11,10 @@ class LoginUI(Screen):
             self.ids.username.text = DEFAULT_USERNAME
         self.ids.password.text = ""
         self.ids.error.text = "Аутентификация"
+
+    def insert_text(self, substring, from_undo=False):
+        s = substring.translate(to_latin)
+        self.ids.username.text += s
 
     def try_log_in(self):
         "попытка залогиниться при нажатии кнопки"

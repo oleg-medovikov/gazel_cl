@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import Screen
-from value import User
+from value import User, to_latin
 from functions import create_user
 
 class NewUserUI(Screen):
@@ -11,6 +11,10 @@ class NewUserUI(Screen):
     def return_users(self):
         self.manager.transition.direction = 'down'
         self.manager.current = 'UsersUI'
+
+    def insert_text(self, substring, from_undo=False):
+        s = substring.translate(to_latin)
+        self.ids.username.text += s
 
     def add_user(self):
         if self.ids.password1.text != self.ids.password2.text:

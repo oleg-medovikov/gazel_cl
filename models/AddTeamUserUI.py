@@ -1,7 +1,8 @@
 from kivy.uix.screenmanager import Screen
 
-from value import VIEW_USER
+from value import VIEW_USER, VIEW_PROJECT
  
+from functions import project_add_user
 
 class AddTeamUserUI(Screen):
     "Добавление пользователя в команду"
@@ -23,14 +24,16 @@ class AddTeamUserUI(Screen):
 {admin}"""
 
         self.ids.description.text = text
+        self.ids.slider.value = -3
+
     def slider_value_change(self,value):
         if value == 0:
             message = "0 Полные права на проект"
-        elif value == 1:
+        elif value == -1:
             message = "1 Доступ к добавлению новых файлов"
-        elif value == 2:
+        elif value == -2:
             message = "2 Доступ только на загрузку файлов"
-        elif value == 3:
+        elif value == -3:
             message = "3 Доступ только для просмотра"
 
         self.ids.access.text = message
@@ -40,4 +43,12 @@ class AddTeamUserUI(Screen):
         self.manager.current = 'ProjectTeamUI'
 
     def add_user_to_team(self):
-        pass
+        res = project_add_user(
+                VIEW_PROJECT.p_name,
+                VIEW_USER.username,
+                -self.ids.slider.value
+                )
+        
+        self.ids.access.text = res
+
+

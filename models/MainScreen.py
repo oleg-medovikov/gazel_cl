@@ -8,7 +8,6 @@ class MainScreen(Screen):
     """Главное окно с выбором проекта
     и с переходом на редактирование пользователей"""
     def on_enter(self):
-        #print(USER.token)
         self.ids.hello.text = get_hello_start() +  USER.first_name + '.'
         self.update_projects_grid()
 

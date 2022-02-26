@@ -1,17 +1,19 @@
 import requests
 
 from config import DATABASE_URL
-from value import  Project, HEADERS
+from value import   HEADERS
 
 
-def create_project(new_project : Project):
+def create_project(P_NAME : str,P_DESCRIPTION : str):
 
     url = DATABASE_URL + 'create_project'
 
-    values = {"p_name" : new_project.p_name,
-              "p_description" : new_project.p_description
+    values = {"p_name" : P_NAME,
+              "p_description" : P_DESCRIPTION
             }
     req = requests.post(url, headers = HEADERS , json = values)
+    
+    print(req.text)
 
     if "error" in req.text:
         return  req.json()["error"]

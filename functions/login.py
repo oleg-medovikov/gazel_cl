@@ -22,7 +22,8 @@ def login(username:str, password:str):
         USER.first_name  = req.json()["first_name"]
         USER.second_name = req.json()["second_name"]
         USER.position    = req.json()["position"]
+        USER.username    = username
         USER.admin       = req.json()["admin"]
-
+        
         HEADERS["Authorization"] = req.json()["token"]
         return True, req.json()

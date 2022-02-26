@@ -8,7 +8,7 @@ from value import HEADERS
 def project_team_users(project: str) -> list:
     url = DATABASE_URL + 'list_team_users'
 
-    req = requests.get(url, headers = HEADERS, json= {"p_name" : project})
+    req = requests.get(url, headers = HEADERS, json=project)
 
     if not "error" in req.text:
         list_=[]

@@ -6,12 +6,8 @@ from value import HEADERS, VIEW_USER
 
 def user_info(username : str):
     url = DATABASE_URL + 'user_info'
-    
-    json = {
-            "username" : username
-            }
 
-    req = requests.get(url, headers = HEADERS, json = json)
+    req = requests.get(url, headers = HEADERS, json = username)
     
     if not "error" in req.text:
         res = req.json()

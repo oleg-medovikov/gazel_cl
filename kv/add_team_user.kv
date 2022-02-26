@@ -22,13 +22,13 @@
 			text_size: cm(8),cm(2)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: 'center'
-			valign: 'middle'
+			valign: 'bottom'
 	
 
 		Slider:
 			id: slider
-			min: 0
-			max: 3
+			min: -3
+			max: 0
 			step: 1
 			orientation: 'horizontal'
 			size_hint: None,None
@@ -38,8 +38,8 @@
 			font_size: cm(0.5)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
-
 			on_touch_move: root.slider_value_change(slider.value)
+
 		Label:
 			id: access
 			size_hint_y: None

@@ -12,9 +12,9 @@ class ProjectTeamUI(Screen):
         
         self.update_users_in_team(in_team)
         users = users_list()
-        for user in users:
-            if user in in_team:
-                users.remove(user)
+        
+        for user in in_team:
+            users.remove(user)
 
         self.update_users_out_team(users)
 
