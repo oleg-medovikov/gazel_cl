@@ -1,0 +1,38 @@
+<CreateReferenceUI>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: cm(0.5)
+		padding_horizontal: cm(1)
+		Label:
+			id: message
+			text: "Создайте новое определение"
+			size_hint_y: None
+			height: cm(2)
+			size_hint_x: None
+			width: cm(8)
+			font_size: cm(0.5)
+			text_size: cm(8),cm(4)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			halign: 'center'
+			valign: 'middle'
+
+		BoxLayout:	
+
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint_y: None
+			height: cm(3.5)
+			padding: cm(1)
+			spacing: cm(1)
+			Button:
+				id: back_project
+				text: 'назад'
+				on_press: root.return_project()
+			Button:
+				id: add
+				text: 'Создать'
+				on_press: root.create_reference()
+
+
+

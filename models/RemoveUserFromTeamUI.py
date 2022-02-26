@@ -23,6 +23,7 @@ class RemoveTeamUserUI(Screen):
 ———————————————
 {admin}"""
         self.ids.description.text = text
+        self.ids.message.text = ''
 
     def return_project_team(self):
         self.manager.transition.direction = "right"

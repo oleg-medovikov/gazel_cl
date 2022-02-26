@@ -10,3 +10,5 @@ USER_FIRST_NAME = "test"
 USER_TOKEN = ""
 USER_POSITION = ""
 
+
+FONT_GRID_SIZE = config("FONT_GRID_SIZE", cast=str)
