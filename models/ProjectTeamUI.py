@@ -44,7 +44,11 @@ class ProjectTeamUI(Screen):
             self.ids.users_out_team.add_widget(button)
 
     def view_team_user(self,instance):
-        pass
+        "переход на окно удаления пользователя из команды"
+        user_info(instance.text)
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'RemoveTeamUserUI'
+    
 
     def view_out_team_user(self,instance):
         "Переход на окно добавления пользователя в команду"
