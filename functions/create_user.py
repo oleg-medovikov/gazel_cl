@@ -2,23 +2,29 @@ from passlib.hash import md5_crypt
 import requests 
 
 from config import DATABASE_URL, SALT
-from value import User, USER
+from value import HEADERS, USER
 
 def hash_password(password: str) -> str:
     "Хеширование пароля"
     return md5_crypt.encrypt(password,salt=SALT)
 
 
-def create_user(new_user: User):
-    new_user.token = USER.token
-    new_user.password_hash = hash_password(new_user.password_hash)
+def create_user(FIRST_NAME,SECOND_NAME,USERNAME,PASSWORD,POSITION,ADMIN):
 
     url = DATABASE_URL + 'new_user'
-    values = new_user.__dict__
-    req = requests.post(url, json = values)
+    
+    PASSWORD_HASH = hash_password(PASSWORD)
 
-    #print(values)
-    #print(req.text)
+    values = dict(
+        first_name = FIRST_NAME,
+        second_name = SECOND_NAME,
+        username = USERNAME,
+        password_hash = PASSWORD_HASH,
+        position = POSITION,
+        admin = ADMIN
+        )
+
+    req = requests.post(url, headers=HEADERS, json = values)
     
     if "error" in req.text:
         return False, req.json()["error"]

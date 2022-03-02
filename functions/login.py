@@ -8,13 +8,13 @@ def hash_password(password: str) -> str:
     "Хеширование пароля"
     return md5_crypt.encrypt(password,salt=SALT)
 
-def login(username:str, password:str):
+def login(USERNAME:str, PASSWORD:str):
     url = DATABASE_URL + 'login'
-    values = {
-        "username" : username,
-        "password_hash" : hash_password(password) 
-            }
-    req = requests.post(url, json = values)
+    values = dict(
+                username = USERNAME,
+                password_hash = hash_password(PASSWORD) 
+                )
+    req = requests.get(url, json = values)
 
     if  "error" in req.text:
         return  False, req.json()["error"]
@@ -22,7 +22,7 @@ def login(username:str, password:str):
         USER.first_name  = req.json()["first_name"]
         USER.second_name = req.json()["second_name"]
         USER.position    = req.json()["position"]
-        USER.username    = username
+        USER.username    = USERNAME
         USER.admin       = req.json()["admin"]
         
         HEADERS["Authorization"] = req.json()["token"]
