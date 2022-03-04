@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import Screen
-
+from kivy.core.window import Window
 from kivy.uix.button import Button
 from value import VIEW_PROJECT
 
@@ -9,6 +9,8 @@ class ProjectUI(Screen):
     """Окно работы с проектом"""
 
     def on_enter(self):
+        Window.size=(600,700)
+
         self.ids.hello.text = f"Проект {VIEW_PROJECT.p_name}"
         self.ids.description.text = VIEW_PROJECT.p_description
 

@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import Screen
-
+from kivy.core.window import Window
 from kivy.uix.button import Button
 from functions import project_team_users, users_list, user_info
 from value import VIEW_PROJECT 
@@ -8,6 +8,8 @@ class ProjectTeamUI(Screen):
     """Окно для редактирования пользователей
     входящих в команду проекта"""
     def on_enter(self):
+        Window.size=(375,700)
+
         in_team = project_team_users (VIEW_PROJECT.p_name)
         
         self.update_users_in_team(in_team)

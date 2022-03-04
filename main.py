@@ -6,6 +6,13 @@ from kivy.lang import Builder
 from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI, NewProjectUI
 from models import ProjectUI, ProjectTeamUI, AddTeamUserUI, RemoveTeamUserUI
 from models import CreateReferenceUI
+import platform, os
+
+
+if platform.system() == 'Windows':
+    os.environ['KIVY_NO_CONSOLELOG'] = '1'
+    os.environ['USE_SDL2'] = '1'
+
 
 # На случай если есть прокси ======
 import httplib2
@@ -52,6 +59,4 @@ class Gazel_cl(App):
     
 if __name__ == '__main__':
     app = Gazel_cl()
-    Window.size=(400,700)
-    Window.fullscreen = False
     app.run()

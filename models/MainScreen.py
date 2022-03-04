@@ -1,4 +1,6 @@
 from kivy.uix.screenmanager import Screen
+from kivy.core.window import Window
+
 from value import USER
 from functions import get_hello_start, projects_list, project_info
 
@@ -8,6 +10,7 @@ class MainScreen(Screen):
     """Главное окно с выбором проекта
     и с переходом на редактирование пользователей"""
     def on_enter(self):
+        Window.size=(375,700)
         self.ids.hello.text = get_hello_start() +  USER.first_name + '.'
         self.update_projects_grid()
 
