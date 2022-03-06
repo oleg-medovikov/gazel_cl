@@ -1,12 +1,20 @@
 from kivy.uix.screenmanager import Screen
+from kivy.core.window import Window
 
 from value import alfavit, numbers
+from config import SMALL_WINDOW, BIG_WINDOW, FONT_INPUT_SIZE
 
 class CreateReferenceUI(Screen):
     """окно создания нового обозначения"""
+    
+    font_input_size = FONT_INPUT_SIZE
 
     def on_enter(self):
+        Window.size = SMALL_WINDOW
+
         self.ids.level1.text = ''
+        self.ids.level2.text = ''
+        self.ids.level3.text = ''
     
     def insert_level1(self,substring,from_undo=False):
         substring = substring.lower()
@@ -31,6 +39,8 @@ class CreateReferenceUI(Screen):
         pass
 
     def return_project(self):
+        Window.size=BIG_WINDOW
+
         self.manager.transition.direction = 'right'
         self.manager.current = 'ProjectUI'
 

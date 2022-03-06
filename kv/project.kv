@@ -7,9 +7,9 @@
 			size_hint_y: None
 			height: cm(2)
 			size_hint_x: None
-			width: cm(8)
+			width: cm(14)
 			font_size: cm(0.5)
-			text_size: cm(8),cm(4)
+			text_size: cm(14),cm(4)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: 'left'
 			valign: 'middle'
@@ -18,31 +18,19 @@
 			size_hint_y: None
 			height: cm(2)
 			size_hint_x: None
-			width: cm(8)
+			width: cm(14)
 			font_size: cm(0.5)
-			text_size: cm(8),cm(4)
+			text_size: cm(14),cm(4)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: 'left'
 			valign: 'middle'
-		
-		Label:
-			text: "Выберете обозначение из доступных кодов"
-			size_hint_y: None
-			height: cm(2)
-			size_hint_x: None
-			width: cm(8)
-			font_size: cm(0.5)
-			text_size: cm(8),cm(2)
-			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-			halign: 'left'
-			valign: 'middle'
-		
+	
 		BoxLayout:
 			orientation: 'horizontal'
 			size_hint_y: None
 			size_hint_x: None
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-			width: cm(8)
+			width: cm(14)
 			height: cm(5)
 			ScrollView:
 				background:  0, 0, 0, 1
@@ -82,6 +70,8 @@
 				background:  0, 0, 0, 1
 				do_scroll_x: False
 				do_scroll_y: True
+				size_hint_x: None
+				width: cm(3)
 				bar_color: 5, 10, 15, .8
 				bar_inactive_color: 5, 20, 10, .5
 				scroll_type: ['bars']
@@ -110,7 +100,6 @@
 					id: add_reference
 					text: 'Добавить обозн.'
 					on_press: root.add_reference()
-		
 
 			BoxLayout:
 				orientation: 'horizontal'
@@ -126,6 +115,3 @@
 					id: new_user
 					text: 'Команда проекта'
 					on_press: root.view_team()
-		
-
-		

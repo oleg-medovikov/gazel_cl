@@ -3,16 +3,20 @@ from kivy.core.window import Window
 from kivy.uix.button import Button
 from value import VIEW_PROJECT
 
-from config import FONT_GRID_SIZE
+from config import FONT_GRID_SIZE, SMALL_WINDOW, BIG_WINDOW
 
 class ProjectUI(Screen):
-    """Окно работы с проектом"""
+    """Большое окно работы с проектом"""
 
     def on_enter(self):
-        Window.size=(600,700)
+        Window.size=BIG_WINDOW
 
         self.ids.hello.text = f"Проект {VIEW_PROJECT.p_name}"
-        self.ids.description.text = VIEW_PROJECT.p_description
+        
+        DESCRIPTION = VIEW_PROJECT.p_description
+        DESCRIPTION += "\n\nВыберете обозначение из доступных кодов"
+        self.ids.description.text = DESCRIPTION
+        
 
         LEVEL1 = ['1','2','3']
         
@@ -70,13 +74,22 @@ class ProjectUI(Screen):
         pass
     
     def add_reference(self):
+        Window.size = SMALL_WINDOW
         self.manager.transition.direction = 'left'
         self.manager.current = 'CreateReferenceUI'
 
     def return_main(self):
+        self.ids.level1.clear_widgets()
+        self.ids.level2.clear_widgets()
+        self.ids.level3.clear_widgets()
+        self.ids.hello.text = ''
+        self.ids.description.text = ''
+
+        Window.size = SMALL_WINDOW
         self.manager.transition.direction = 'right'
         self.manager.current = 'MainScreen'
 
     def view_team(self):
+        Window.size = SMALL_WINDOW
         self.manager.transition.direction = 'up'
         self.manager.current = 'ProjectTeamUI'

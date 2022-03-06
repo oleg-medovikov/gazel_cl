@@ -2,13 +2,13 @@ from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window 
 
 from value import VIEW_USER, VIEW_PROJECT
- 
+from config import SMALL_WINDOW 
 from functions import project_add_user
 
 class AddTeamUserUI(Screen):
     "Добавление пользователя в команду"
     def on_enter(self):
-        Window.size=(375,700)
+        Window.size=SMALL_WINDOW
         if VIEW_USER.admin:
             admin = 'Является админом'
         else:

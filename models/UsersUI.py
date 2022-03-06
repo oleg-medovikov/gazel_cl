@@ -2,7 +2,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.button import Button
 
 from functions import users_list, user_info
-        
+from config import FONT_GRID_SIZE        
 
 class UsersUI(Screen):
     """Класс окна в котором просматривать
@@ -17,7 +17,7 @@ class UsersUI(Screen):
             button = Button(
                     text = username,
                     background_color = (0.32,0.32,0.32,1),
-                    font_size = '0.635cm',
+                    font_size = FONT_GRID_SIZE,
                     on_press = self.view_user
                     )
             self.ids.users_grid.add_widget(button)

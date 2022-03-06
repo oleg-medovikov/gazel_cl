@@ -1,16 +1,17 @@
 from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window
+from kivy.uix.button import Button
 
 from value import USER
 from functions import get_hello_start, projects_list, project_info
+from config import SMALL_WINDOW, BIG_WINDOW, FONT_GRID_SIZE
 
-from kivy.uix.button import Button
 
 class MainScreen(Screen):
     """Главное окно с выбором проекта
     и с переходом на редактирование пользователей"""
     def on_enter(self):
-        Window.size=(375,700)
+        Window.size=SMALL_WINDOW
         self.ids.hello.text = get_hello_start() +  USER.first_name + '.'
         self.update_projects_grid()
 
@@ -21,7 +22,7 @@ class MainScreen(Screen):
             button = Button(
                     text = project,
                     background_color = (0.32,0.32,0.32,1),
-                    font_size = '0.635cm',
+                    font_size = FONT_GRID_SIZE,
                     on_press = self.view_project
                     )
             self.ids.projects_grid.add_widget(button)
@@ -31,7 +32,7 @@ class MainScreen(Screen):
             button = Button(
                     text = "Добавить проект",
                     background_color = (0.32,0.32,0.32,1),
-                    font_size = '0.635cm',
+                    font_size = FONT_GRID_SIZE,
                     on_press = self.add_project
                     )
             self.ids.projects_grid.add_widget(button)
@@ -39,6 +40,8 @@ class MainScreen(Screen):
     def view_project(self,instance):
         "нажатие на кнопку с именем проекта"
         project_info(instance.text)
+        Window.size=BIG_WINDOW
+
         self.manager.transition.direction = 'left'
         self.manager.current = 'ProjectUI'
 

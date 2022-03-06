@@ -21,18 +21,16 @@
 			multiline:False
 			hint_text:"level1"
 			size_hint: None,None
-			size_hint_x: None
 			width: '8cm'
-			height:'1.5cm'
-			font_size:'0.6cm'
+			height: cm(1.5)
+			font_size: root.font_input_size
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 			insert_text: root.insert_level1
 
 		BoxLayout:
 			orientation: 'horizontal'
-			size_hint_x: None
-			size_hint_y: None
+			size_hint: None,None
 			width:  cm(8)
 			height: cm(1.5)
 			spacing: cm(1)
@@ -42,7 +40,7 @@
 				id: level2
 				multiline:False
 				hint_text:"level2"
-				font_size:'0.6cm'
+				font_size: root.font_input_size
 				size_hint_x: None
 				width: cm(4.5)
 				insert_text: root.insert_level2
@@ -51,7 +49,7 @@
 				id: level3
 				multiline:False
 				hint_text:"level3"
-				font_size:'0.6cm'
+				font_size: root.font_input_size
 				insert_text: root.insert_level3
 
 		TextInput:
@@ -61,10 +59,12 @@
 			size_hint: None,None
 			size_hint_x: None
 			width: '8cm'
-			height:'1.5cm'
-			font_size:'0.6cm'
+			height:'2cm'
+			font_size: root.font_input_size
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
+
+		BoxLayout:
 
 		BoxLayout:
 			orientation: 'horizontal'

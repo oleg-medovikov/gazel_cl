@@ -1,6 +1,8 @@
 from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window
 from kivy.uix.button import Button
+
+from config import SMALL_WINDOW, BIG_WINDOW, FONT_GRID_SIZE
 from functions import project_team_users, users_list, user_info
 from value import VIEW_PROJECT 
 
@@ -8,7 +10,7 @@ class ProjectTeamUI(Screen):
     """Окно для редактирования пользователей
     входящих в команду проекта"""
     def on_enter(self):
-        Window.size=(375,700)
+        Window.size=SMALL_WINDOW
 
         in_team = project_team_users (VIEW_PROJECT.p_name)
         
@@ -28,7 +30,7 @@ class ProjectTeamUI(Screen):
             button = Button(
                     text = str(user),
                     background_color = (0.32,0.32,0.32,1),
-                    font_size = '0.635cm',
+                    font_size = FONT_GRID_SIZE,
                     on_press = self.view_team_user
                     )
             self.ids.users_in_team.add_widget(button)
@@ -40,7 +42,7 @@ class ProjectTeamUI(Screen):
             button = Button(
                     text = str(user),
                     background_color = (0.32,0.32,0.32,1),
-                    font_size = '0.635cm',
+                    font_size = FONT_GRID_SIZE,
                     on_press = self.view_out_team_user
                     )
             self.ids.users_out_team.add_widget(button)
@@ -59,6 +61,8 @@ class ProjectTeamUI(Screen):
         self.manager.current = 'AddTeamUserUI'
 
     def return_project(self):
+        Window.size=BIG_WINDOW
+
         self.manager.transition.direction = 'down'
         self.manager.current = 'ProjectUI'
 

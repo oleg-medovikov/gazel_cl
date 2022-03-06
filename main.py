@@ -1,3 +1,14 @@
+import platform, os
+
+
+#os.environ['KIVY_NO_CONSOLELOG'] = '1'
+
+if platform.system() == 'Windows':
+    os.environ['USE_SDL2'] = '1'
+
+
+
+
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
@@ -6,12 +17,6 @@ from kivy.lang import Builder
 from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI, NewProjectUI
 from models import ProjectUI, ProjectTeamUI, AddTeamUserUI, RemoveTeamUserUI
 from models import CreateReferenceUI
-import platform, os
-
-
-if platform.system() == 'Windows':
-    os.environ['KIVY_NO_CONSOLELOG'] = '1'
-    os.environ['USE_SDL2'] = '1'
 
 
 # На случай если есть прокси ======
