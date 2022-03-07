@@ -1,37 +1,20 @@
 <ProjectUI>:
 	BoxLayout:
 		orientation: 'vertical'
-		spacing: cm(0.5)
-		Label:
-			id: hello
-			size_hint_y: None
-			height: cm(2)
-			size_hint_x: None
-			width: cm(14)
-			font_size: cm(0.5)
-			text_size: cm(14),cm(4)
-			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-			halign: 'left'
-			valign: 'middle'
+
 		Label:
 			id: description
-			size_hint_y: None
-			height: cm(2)
+			font_size: root.font_text_size
 			size_hint_x: None
-			width: cm(14)
-			font_size: cm(0.5)
-			text_size: cm(14),cm(4)
+			width: dp(0.8*root.width)
+			text_size: dp(0.8*root.width),cm(4)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-			halign: 'left'
-			valign: 'middle'
 	
 		BoxLayout:
 			orientation: 'horizontal'
-			size_hint_y: None
 			size_hint_x: None
+			width: dp(0.8*root.width)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-			width: cm(14)
-			height: cm(5)
 			ScrollView:
 				background:  0, 0, 0, 1
 				do_scroll_x: False
@@ -86,32 +69,37 @@
 					row_default_height: cm(1.5)
 
 		BoxLayout:
-			orientation: 'vertical'
-			padding: cm(1)
-			spacing: cm(0.5)
-			BoxLayout:
-				orientation: 'horizontal'
-				size_hint_y: None
-				height: cm(1.5)
-				padding_vertical: cm(1)
-				spacing: cm(1)
-				Label:
-				Button:
-					id: add_reference
-					text: 'Добавить обозн.'
-					on_press: root.add_reference()
+			orientation: 'horizontal'
+			size_hint: None, None
+			height: cm(2.5)
+			width: dp(0.8*root.width)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			spacing: cm(1)
+			padding: (0,cm(1),0,0)
 
-			BoxLayout:
-				orientation: 'horizontal'
-				size_hint_y: None
-				height: cm(1.5)
-				padding_vertical: cm(1)
-				spacing: cm(1)
-				Button:
-					id: back
-					text: 'назад'
-					on_press: root.return_main()
-				Button:
-					id: new_user
-					text: 'Команда проекта'
-					on_press: root.view_team()
+			Button:
+				id: project_log
+				text: 'Лог проекта'
+			
+			Button:
+				id: add_reference
+				text: 'Добавить обозн.'
+				on_press: root.add_reference()
+
+		BoxLayout:
+			orientation: 'horizontal'
+			size_hint: None, None
+			height: cm(3)
+			width: dp(0.8*root.width)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			spacing: cm(1)
+			padding: (0,cm(0.5),0,cm(1))
+	
+			Button:
+				id: back
+				text: 'назад'
+				on_press: root.return_main()
+			Button:
+				id: new_user
+				text: 'Команда проекта'
+				on_press: root.view_team()

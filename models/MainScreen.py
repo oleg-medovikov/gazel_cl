@@ -4,15 +4,21 @@ from kivy.uix.button import Button
 
 from value import USER
 from functions import get_hello_start, projects_list, project_info
-from config import SMALL_WINDOW, BIG_WINDOW, FONT_GRID_SIZE
+from config import SMALL_WINDOW, BIG_WINDOW, FONT_GRID_SIZE, \
+                   FONT_TEXT_SIZE
 
 
 class MainScreen(Screen):
     """Главное окно с выбором проекта
     и с переходом на редактирование пользователей"""
+    font_text_size = FONT_TEXT_SIZE
+    width = SMALL_WINDOW[0]
+
     def on_enter(self):
         Window.size=SMALL_WINDOW
-        self.ids.hello.text = get_hello_start() +  USER.first_name + '.'
+        self.ids.hello.text = get_hello_start() +  USER.first_name + '.' \
+                + "\nВыберите из доступных проектов:" 
+
         self.update_projects_grid()
 
     def update_projects_grid(self):

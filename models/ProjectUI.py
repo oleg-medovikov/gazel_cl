@@ -3,17 +3,20 @@ from kivy.core.window import Window
 from kivy.uix.button import Button
 from value import VIEW_PROJECT
 
-from config import FONT_GRID_SIZE, SMALL_WINDOW, BIG_WINDOW
+from config import FONT_GRID_SIZE, SMALL_WINDOW, BIG_WINDOW, \
+                   FONT_TEXT_SIZE
 
 class ProjectUI(Screen):
     """Большое окно работы с проектом"""
 
+    font_text_size = FONT_TEXT_SIZE
+    width = BIG_WINDOW[0]
+
     def on_enter(self):
         Window.size=BIG_WINDOW
 
-        self.ids.hello.text = f"Проект {VIEW_PROJECT.p_name}"
-        
-        DESCRIPTION = VIEW_PROJECT.p_description
+        DESCRIPTION = f"Проект {VIEW_PROJECT.p_name}\n"
+        DESCRIPTION += VIEW_PROJECT.p_description
         DESCRIPTION += "\n\nВыберете обозначение из доступных кодов"
         self.ids.description.text = DESCRIPTION
         
@@ -82,7 +85,6 @@ class ProjectUI(Screen):
         self.ids.level1.clear_widgets()
         self.ids.level2.clear_widgets()
         self.ids.level3.clear_widgets()
-        self.ids.hello.text = ''
         self.ids.description.text = ''
 
         Window.size = SMALL_WINDOW

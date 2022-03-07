@@ -1,12 +1,26 @@
 from kivy.uix.screenmanager import Screen
+from kivy.core.window import Window
+
+from config import SMALL_WINDOW, FONT_TEXT_SIZE, FONT_INPUT_SIZE
 from value import User, to_latin
 from functions import create_user
 
 class NewUserUI(Screen):
     """Класс окна в котором просматривать
     существующих юзеров"""
-    #def on_enter(self):
-    #    pass
+    
+    font_text_size = FONT_TEXT_SIZE
+    font_input_size = FONT_INPUT_SIZE
+    width = SMALL_WINDOW[0]
+
+    def on_enter(self):
+        Window.size = SMALL_WINDOW
+        self.ids.username.text = ''
+        self.ids.password1.text = ''
+        self.ids.password2.text = ''
+        self.ids.first_name.text = ''
+        self.ids.second_name.text = ''
+        self.ids.position.text = ''
 
     def return_users(self):
         self.manager.transition.direction = 'down'

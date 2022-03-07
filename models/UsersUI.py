@@ -1,13 +1,20 @@
 from kivy.uix.screenmanager import Screen
+from kivy.core.window import Window
 from kivy.uix.button import Button
 
+
 from functions import users_list, user_info
-from config import FONT_GRID_SIZE        
+from config import SMALL_WINDOW, FONT_GRID_SIZE, FONT_TEXT_SIZE 
 
 class UsersUI(Screen):
     """Класс окна в котором просматривать
     существующих юзеров"""
+    
+    font_text_size = FONT_TEXT_SIZE
+    width = SMALL_WINDOW[0]
+
     def on_enter(self):
+        Window.size = SMALL_WINDOW
         self.update_users_grid()
     
     def update_users_grid(self):
@@ -24,7 +31,6 @@ class UsersUI(Screen):
 
     def view_user(self,instance):
         "нажатие на кнопку с именем пользователя"
-        #print(instance.text)
         user_info(instance.text)
         self.manager.transition.direction = 'left'
         self.manager.current = 'ViewUserUI'

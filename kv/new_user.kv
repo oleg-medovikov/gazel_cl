@@ -6,12 +6,11 @@
 		Label:
 			id: message
 			text: "Задайте данные нового пользователя"
-			size_hint_y: None
+			size_hinty: None,None
 			height: cm(2)
-			size_hint_x: None
-			width: cm(8)
-			font_size: cm(0.5)
-			text_size: cm(8),cm(4)
+			width: dp(0.8*root.width)
+			font_size: root.font_text_size
+			text_size: dp(0.8*root.width),cm(4)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: 'center'
 			valign: 'middle'
@@ -21,10 +20,9 @@
 			multiline:False
 			hint_text:"Username"
 			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
+			font_size: root.font_text_size
 			height:'1.5cm'
-			font_size:'0.6cm'
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 			insert_text: root.insert_text
@@ -35,10 +33,9 @@
 			hint_text: 'Пароль'
 			password: True
 			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
+			font_size: root.font_text_size
 			height:'1.5cm'
-			font_size:'0.6cm'
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 		TextInput:
@@ -47,10 +44,9 @@
 			hint_text: 'Повторите пароль'
 			password: True
 			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
+			font_size: root.font_text_size
 			height:'1.5cm'
-			font_size:'0.6cm'
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 		TextInput:
@@ -58,10 +54,9 @@
 			multiline:False
 			hint_text: "Имя Отчество"
 			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
+			font_size: root.font_text_size
 			height:'1.5cm'
-			font_size:'0.6cm'
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 		TextInput:
@@ -69,10 +64,9 @@
 			multiline:False
 			hint_text: "Фамилия"
 			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
+			font_size: root.font_text_size
 			height:'1.5cm'
-			font_size:'0.6cm'
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 		TextInput:
@@ -80,18 +74,19 @@
 			multiline:False
 			hint_text: "Должность"
 			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
+			font_size: root.font_text_size
 			height:'1.5cm'
-			font_size:'0.6cm'
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 		BoxLayout:
 			orientation: 'horizontal'
-			size_hint_y: None
+			size_hint: None, None
 			height: cm(3.5)
-			padding: cm(1)
+			width: dp(0.8*root.width)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			spacing: cm(1)
+			padding: (0,cm(1),0,cm(1))
 			Button:
 				id: back
 				text: 'назад'

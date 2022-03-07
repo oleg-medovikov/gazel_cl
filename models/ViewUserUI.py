@@ -1,13 +1,21 @@
 from kivy.uix.screenmanager import Screen
+from kivy.core.window  import Window
 
 from functions import update_password
 from value import VIEW_USER 
+from config import SMALL_WINDOW, FONT_TEXT_SIZE, FONT_INPUT_SIZE
 
 class ViewUserUI(Screen):
     """ Окно в котором рассматриваем параметры
     конкретного пользователя и меняем пароль"""
+    
+    font_text_size = FONT_TEXT_SIZE
+    font_input_size = FONT_INPUT_SIZE
+    width = SMALL_WINDOW[0]
 
     def on_enter(self):
+        Window.size = SMALL_WINDOW
+
         if VIEW_USER.admin:
             admin = 'Является админом'
         else:

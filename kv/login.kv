@@ -10,9 +10,9 @@
 		Label:
 			id : error
 			text:'Авторизация'
-			font_size: cm(0.8)
+			font_size: root.font_text_size
 			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
 			text_size: cm(8), cm(4)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: "center"
@@ -22,10 +22,9 @@
 			multiline:False
 			hint_text:"Username"
 			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
 			height:'1.5cm'
-			font_size:'0.635cm'
+			font_size: root.font_input_size
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 			insert_text: root.insert_text
@@ -34,22 +33,19 @@
 			id: password
 			multiline:False
 			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
+			width: dp(0.8*root.width)
 			height:'1.5cm'
 			hint_text:"Password"
-			font_size:'0.635cm'
+			font_size: root.font_input_size
 			password:True
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 
 		Button:
-			size_hint: None,None
-			size_hint_x: None
-			width: '8cm'
-			height:'1.5cm'
+			size_hint: None, None
+			width: dp(0.8*root.width)
 			text:'Войти'
-			font_size:'0.635cm'
+			font_size: root.font_text_size
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			on_press: root.try_log_in() 
 
@@ -57,7 +53,7 @@
 			orientation:'horizontal'
 			size_hint_x: None
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-			width: '8cm'
+			width: dp(0.8*root.width)
 			Label:
 				text:'Разработано '
 				font_size:'0.32cm'

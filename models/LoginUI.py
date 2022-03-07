@@ -2,11 +2,16 @@ from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window
 
 from functions import login
-from config import DEFAULT_USERNAME, DATABASE_URL, SMALL_WINDOW
+from config import DEFAULT_USERNAME, DATABASE_URL, SMALL_WINDOW, \
+                   FONT_TEXT_SIZE, FONT_INPUT_SIZE 
 from value import to_latin
 
 class LoginUI(Screen):
     "Класс первого окна входа"
+    font_text_size = FONT_TEXT_SIZE
+    font_input_size = FONT_INPUT_SIZE
+    width = SMALL_WINDOW[0]
+
     def on_enter(self):
         Window.fullscreen = False
         Window.size= SMALL_WINDOW

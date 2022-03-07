@@ -1,23 +1,24 @@
 <ViewUserUI>:
 	BoxLayout:
 		orientation: 'vertical'
-		spacing: cm(.25)
-		padding_horizontal: cm(1.5)
+		spacing: cm(0.5)
+		padding_horizontal: cm(1)
 		Label:
 			id: description
-			font_size: cm(0.6)
+			font_size: root.font_text_size
 			size_hint_x: None
-			width: cm(8)
-			text_size: cm(8), cm(12)
+			width: dp(0.8*root.width)
+			text_size: dp(0.8*root.width), cm(12)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: "left"
+			valign: 'bottom'
 		
 		Label:
 			id: error
-			font_size: cm(0.5)
+			font_size: root.font_text_size
 			size_hint_x: None
-			width: cm(8)
-			text_size: cm(8), cm(4)
+			width: dp(0.8*root.width)
+			text_size: dp(0.8*root.width), cm(4)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			halign: "center"
 			valign: "bottom"
@@ -28,10 +29,9 @@
 			hint_text: 'Новый пароль'
 			password: True
 			size_hint: None,None
-			size_hint_x: None
-			width: cm(8)
+			width: dp(0.8*root.width)
 			height: cm(1.5)
-			font_size: cm(0.6)
+			font_size: root.font_input_size
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 		TextInput:
@@ -40,19 +40,20 @@
 			hint_text: 'Повторите пароль'
 			password: True
 			size_hint: None,None
-			size_hint_x: None
-			width: cm(8)
+			width: dp(0.8*root.width)
 			height: cm(1.5)
-			font_size: cm(0.6)
+			font_size: root.font_input_size
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
 
 		BoxLayout:
 			orientation: 'horizontal'
-			size_hint_y: None
+			size_hint: None, None
 			height: cm(3.5)
-			padding: cm(1)
+			width: dp(0.8*root.width)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			spacing: cm(1)
+			padding: (0,cm(1),0,cm(1))
 			Button:
 				id: back
 				text: 'назад'

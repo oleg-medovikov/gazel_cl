@@ -1,22 +1,25 @@
 <UsersUI>:
 	BoxLayout:
 		orientation: 'vertical'
-		spacing: cm(1.5)
-		padding_horizontal: cm(1.5)
-		BoxLayout:
-			orientation: 'horizontal'
-			size_hint_y: None
-			height: cm(1.5)
-			Label:
-				text: "Существующие в системе пользователи"
-				font_size: cm(0.5)
+		spacing: cm(0.5)
+		padding_vertical: cm(1)
+		Label:
+			size_hint: None, None
+			height: cm(2)
+			font_size: root.font_text_size
+			width: dp(0.8*root.width)
+			text_size: dp(0.8*root.width),cm(4)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			text: "Существующие в системе пользователи:"
+			halign: "center"
+			valign: "middle"
+		
 		ScrollView:
             background:  0, 0, 0, 1
             do_scroll_x: False
             do_scroll_y: True
-            size_hint_y: .9
 			size_hint_x: None
-			width: cm(8)
+			width: dp(0.8*root.width)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             bar_color: 5, 10, 15, .8
             bar_inactive_color: 5, 20, 10, .5
@@ -26,17 +29,18 @@
                 height: self.minimum_height
                 id: users_grid
                 spacing: "5dp", "5dp"
-                padding: ("20dp", "0dp", "0dp", "20dp")
                 cols:1
                 row_force_default: True
                 row_default_height: cm(1.5)
 
 		BoxLayout:
 			orientation: 'horizontal'
-			size_hint_y: None
+			size_hint: None, None
 			height: cm(3.5)
-			padding: cm(1)
+			width: dp(0.8*root.width)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			spacing: cm(1)
+			padding: (0,cm(1),0,cm(1))
 			Button:
 				id: back
 				text: 'назад'
