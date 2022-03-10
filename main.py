@@ -1,7 +1,9 @@
-import platform, os
+import platform, os, sys
 
 
-#os.environ['KIVY_NO_CONSOLELOG'] = '1'
+os.environ['KIVY_NO_CONSOLELOG'] = '1'
+
+os.environ['USE_SDL2'] = '1'
 
 if platform.system() == 'Windows':
     os.environ['USE_SDL2'] = '1'
@@ -13,6 +15,8 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.lang import Builder
+from kivy.resources import resource_add_path, resource_find
+
 
 from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI, NewProjectUI
 from models import ProjectUI, ProjectTeamUI, AddTeamUserUI, RemoveTeamUserUI
@@ -64,4 +68,6 @@ class Gazel_cl(App):
     
 if __name__ == '__main__':
     app = Gazel_cl()
+    if hasattr(sys, '_MEIPASS'):
+        resource_add_path(os.path.join(sys._MEIPASS))
     app.run()

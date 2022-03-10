@@ -1,12 +1,12 @@
 <LoginUI>:
 	BoxLayout:
 		orientation: 'vertical'
-		spacing:'1.3cm'
-		padding:'1.5cm'
+		spacing: cm(1.5)
+		padding: cm(1.5)
 		Image:       
 			source:"img/domy.png"
 			size_hint_y: None
-			height:"2.5cm"
+			height: cm(2.5)
 		Label:
 			id : error
 			text:'Авторизация'
@@ -23,7 +23,7 @@
 			hint_text:"Username"
 			size_hint: None,None
 			width: dp(0.8*root.width)
-			height:'1.5cm'
+			height: cm(1.5)
 			font_size: root.font_input_size
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			padding : self.height/2 - self.font_size/2
@@ -34,7 +34,7 @@
 			multiline:False
 			size_hint: None,None
 			width: dp(0.8*root.width)
-			height:'1.5cm'
+			height:cm(1.5)
 			hint_text:"Password"
 			font_size: root.font_input_size
 			password:True
@@ -44,6 +44,7 @@
 		Button:
 			size_hint: None, None
 			width: dp(0.8*root.width)
+			height: cm(1.5)
 			text:'Войти'
 			font_size: root.font_text_size
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
@@ -56,9 +57,9 @@
 			width: dp(0.8*root.width)
 			Label:
 				text:'Разработано '
-				font_size:'0.32cm'
+				font_size: cm(0.32)
 				halign:'left'
 			Label:
 				text:'Медовиков О.Е.'
-				font_size:'0.45cm'
-				color:0,1,1,1
+				font_size: cm(0.45)
+				color: 0,1,1,1
