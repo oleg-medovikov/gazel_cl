@@ -8,9 +8,6 @@ os.environ['USE_SDL2'] = '1'
 if platform.system() == 'Windows':
     os.environ['USE_SDL2'] = '1'
 
-
-
-
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window

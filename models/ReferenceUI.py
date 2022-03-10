@@ -12,4 +12,14 @@ class ReferenceUI(Screen):
     font_text_size = FONT_TEXT_SIZE
     width = BIG_WINDOW[0]
 
+    def on_enter(self):
+        Window.size=BIG_WINDOW
+
+
+
+    def return_project(self):
+        self.manager.transition.direction = 'right'
+        self.manager.current = 'ProjectUI'
+
+
 

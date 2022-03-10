@@ -1,8 +1,11 @@
 from starlette.config import Config
-
+from pathlib import path
 
 # Путь для файла конфигураций
 config = Config("config.cfg")
+
+# Путь для рабочей директории 
+ROOT = Path(Path.home(), 'Documents', 'WORKSPACE')
 
 # Адрес базы данных
 DATABASE_URL=config("DATABASE_URL", cast=str, default='')
