@@ -1,8 +1,9 @@
 from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window
 from kivy.uix.button import Button
-from value import VIEW_PROJECT
+from value import VIEW_PROJECT, VIEW_REFERENCE
 
+from functions import reference_level1, reference_level2, reference_level3
 from config import FONT_GRID_SIZE, SMALL_WINDOW, BIG_WINDOW, \
                    FONT_TEXT_SIZE
 
@@ -17,11 +18,14 @@ class ProjectUI(Screen):
 
         DESCRIPTION = f"Проект {VIEW_PROJECT.p_name}\n"
         DESCRIPTION += VIEW_PROJECT.p_description
-        DESCRIPTION += "\n\nВыберете обозначение из доступных кодов"
-        self.ids.description.text = DESCRIPTION
         
+        LEVEL1 = reference_level1()
+        if len(LEVEL1):
+            DESCRIPTION += "\n\nВыберете обозначение из доступных кодов"
+        else:
+            DESCRIPTION += "\n\nДанный проект ещё пустой, создайте новые обозначения"
 
-        LEVEL1 = ['1','2','3']
+        self.ids.description.text = DESCRIPTION
         
         self.update_level1(LEVEL1)
     
@@ -46,7 +50,9 @@ class ProjectUI(Screen):
         self.ids.level2.clear_widgets()
         self.ids.level3.clear_widgets()
 
-        LEVEL2 = ['1','2']
+        VIEW_REFERENCE.r_level1 = instance.text
+
+        LEVEL2 = reference_level2()
 
         for code in LEVEL2:
             button = Button(
@@ -61,7 +67,9 @@ class ProjectUI(Screen):
         "обновляет список кодов третье уровня"
         self.ids.level3.clear_widgets()
 
-        LEVEL3 = ['1','2','3','4']
+        VIEW_REFERENCE.r_level2 = instance.text
+
+        LEVEL3 = reference_level3()
 
         for code in LEVEL3:
             button = Button(
@@ -74,7 +82,9 @@ class ProjectUI(Screen):
 
 
     def view_reference(self, instance):
-        pass
+        VIEW_REFERENCE.r_level3 = instance.text
+        self.manager.transition.direction = 'left'
+        self.manager.current = 'ReferenceUI'
     
     def add_reference(self):
         Window.size = SMALL_WINDOW

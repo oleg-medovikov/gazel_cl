@@ -2,6 +2,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window
 
 from value import alfavit, numbers
+from functions import reference_create
 from config import SMALL_WINDOW, BIG_WINDOW, FONT_INPUT_SIZE
 
 class CreateReferenceUI(Screen):
@@ -15,7 +16,9 @@ class CreateReferenceUI(Screen):
         self.ids.level1.text = ''
         self.ids.level2.text = ''
         self.ids.level3.text = ''
-    
+        self.ids.reference_name.text = ''
+        self.ids.message.text = 'Создайте новое определение'
+
     def insert_level1(self,substring,from_undo=False):
         substring = substring.lower()
         if len(self.ids.level1.text) < 8:
@@ -36,7 +39,20 @@ class CreateReferenceUI(Screen):
 
 
     def create_reference(self):
-        pass
+        if self.ids.level1.text == '' \
+           or self.ids.level2.text == '' \
+           or self.ids.level3.text == '' \
+           or self.ids.reference_name.text == '' :
+            self.ids.message.text = 'Заполните все поля'
+        else:
+            res = reference_create(
+                    self.ids.reference_name.text,
+                    self.ids.level1.text,
+                    self.ids.level2.text,
+                    self.ids.level3.text,
+                    )
+            self.ids.message.text = res
+          
 
     def return_project(self):
         Window.size=BIG_WINDOW

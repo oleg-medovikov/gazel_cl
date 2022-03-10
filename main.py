@@ -1,7 +1,7 @@
 import platform, os, sys
 
 
-os.environ['KIVY_NO_CONSOLELOG'] = '1'
+#os.environ['KIVY_NO_CONSOLELOG'] = '1'
 
 os.environ['USE_SDL2'] = '1'
 
@@ -20,7 +20,7 @@ from kivy.resources import resource_add_path, resource_find
 
 from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI, NewProjectUI
 from models import ProjectUI, ProjectTeamUI, AddTeamUserUI, RemoveTeamUserUI
-from models import CreateReferenceUI
+from models import CreateReferenceUI, ReferenceUI
 
 
 # На случай если есть прокси ======
@@ -46,6 +46,7 @@ Builder.load_string(f"""
 {open('kv/add_team_user.kv',    'r',  encoding='utf-8').read()}
 {open('kv/remove_team_user.kv', 'r',  encoding='utf-8').read()}
 {open('kv/create_reference.kv', 'r',  encoding='utf-8').read()}
+{open('kv/reference.kv',        'r',  encoding='utf-8').read()}
 """)
 
 
@@ -63,6 +64,7 @@ class Gazel_cl(App):
         sm.add_widget(AddTeamUserUI     (name = 'AddTeamUserUI'))
         sm.add_widget(RemoveTeamUserUI  (name = 'RemoveTeamUserUI'))
         sm.add_widget(CreateReferenceUI (name = 'CreateReferenceUI'))
+        sm.add_widget(ReferenceUI       (name = 'ReferenceUI'))
         return sm
     
     
