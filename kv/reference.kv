@@ -3,10 +3,11 @@
 		orientation: 'vertical'
 
 		Label:
-			id: description
+			id: r_name
 			font_size: root.font_text_size
-			size_hint_x: None
+			size_hint: None, None
 			width: dp(0.8*root.width)
+			height: cm(4)
 			text_size: dp(0.8*root.width),cm(4)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 	
@@ -21,12 +22,14 @@
 			GridLayout:
 				size_hint_y: None
 				height: self.minimum_height
-				id: files
+				id: files_grid
 				spacing: "5dp", "5dp"
 				padding: ("20dp", "0dp", "0dp", "20dp")
 				cols:1
 				row_force_default: True
 				row_default_height: cm(1.5)
+
+		BoxLayout:
 
 		BoxLayout:
 			orientation: 'horizontal'

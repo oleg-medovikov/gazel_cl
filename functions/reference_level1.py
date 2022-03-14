@@ -8,7 +8,7 @@ def reference_level1():
 
     url = DATABASE_URL + 'reference_level1'
 
-    req = requests.post(url, headers = HEADERS , json = VIEW_PROJECT.p_name)
+    req = requests.get(url, headers = HEADERS , json = VIEW_PROJECT.p_name)
 
     if "error" in req.text:
         return  req.json()["error"]

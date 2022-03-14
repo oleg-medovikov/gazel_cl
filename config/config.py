@@ -1,5 +1,5 @@
 from starlette.config import Config
-from pathlib import path
+from pathlib import Path
 
 # Путь для файла конфигураций
 config = Config("config.cfg")

@@ -12,7 +12,7 @@ def reference_level2():
             R_CODE_NAME_LEVEL_1 = VIEW_REFERENCE.r_level1
             )
 
-    req = requests.post(url, headers = HEADERS , json = value )
+    req = requests.get(url, headers = HEADERS , json = value )
 
     if "error" in req.text:
         return  req.json()["error"]

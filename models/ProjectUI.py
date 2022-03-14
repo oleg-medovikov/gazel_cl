@@ -3,7 +3,7 @@ from kivy.core.window import Window
 from kivy.uix.button import Button
 from value import VIEW_PROJECT, VIEW_REFERENCE
 
-from functions import reference_level1, reference_level2, reference_level3
+from functions import reference_level1, reference_level2, reference_level3, reference_name
 from config import FONT_GRID_SIZE, SMALL_WINDOW, BIG_WINDOW, \
                    FONT_TEXT_SIZE
 
@@ -82,7 +82,9 @@ class ProjectUI(Screen):
 
 
     def view_reference(self, instance):
+        "Переходим в окно наименования"
         VIEW_REFERENCE.r_level3 = instance.text
+        reference_name()
         self.manager.transition.direction = 'left'
         self.manager.current = 'ReferenceUI'
     
