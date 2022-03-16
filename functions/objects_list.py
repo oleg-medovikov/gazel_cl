@@ -1,21 +1,11 @@
-import requests, os, hashlib
+import requests, os 
 
 from config import DATABASE_URL
 
 from value import HEADERS, VIEW_PROJECT, VIEW_REFERENCE, \
                   File, FILES_LIST
-from config import ROOT 
+from config import ROOT, get_hash_md5
 
-
-def get_hash_md5(filename):
-    with open(filename, 'rb') as f:
-        m = hashlib.md5()
-        while True:
-            data = f.read(8192)
-            if not data:
-                break
-            m.update(data)
-        return m.hexdigest()
 
 def objects_list():
     
@@ -37,7 +27,6 @@ def objects_list():
     if req.json() is None and len(FILES_CLIENT) == 0 :
         FILES_LIST.clear()
         f = File()
-        f.id = ''
         f.name = ''
         f.type = 'Файлов нет'
         f.color = 'grey'
@@ -46,10 +35,9 @@ def objects_list():
         FILES_LIST.clear()
         for file in FILES_CLIENT:
             f = File()
-            f.id = ''
             f.name = file.name
             f.path = file
-            f.type = 'Не загружен в базу' 
+            f.type = 'Не загружен в базу'
             f.color = 'red'
             FILES_LIST.append(f) 
 

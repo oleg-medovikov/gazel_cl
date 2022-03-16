@@ -5,7 +5,7 @@ from kivy.uix.button import Button
 
 from config import BIG_WINDOW, FONT_TEXT_SIZE, FONT_GRID_SIZE
 from value import VIEW_REFERENCE, FILES_LIST
-from functions import objects_list
+from functions import objects_list, objects_create
 
 
 class ReferenceUI(Screen):
@@ -38,8 +38,14 @@ class ReferenceUI(Screen):
             self.ids.files_grid.add_widget(button)
  
     def view_file(self,instance):
-        print(instance.id)
+        pass
 
+    def synchronization(self):
+        for file in FILES_LIST:
+            if file.type == 'Не загружен в базу':
+                res = objects_create(FILES_LIST.index(file))
+                #print(res)
+            break
     def return_project(self):
         self.manager.transition.direction = 'right'
         self.manager.current = 'ProjectUI'
