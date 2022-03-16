@@ -25,16 +25,20 @@ class ReferenceUI(Screen):
         
 
     def update_files_grid(self):
-        "обновляет список доступных проектов"
+        "обновляет список доступных файлов"
         self.ids.files_grid.clear_widgets()
         for file in  FILES_LIST:
             button = Button(
-                    text = file.name,
+                    text = file.name +'   '+ file.type,
                     background_color = file.color,
-                    font_size = FONT_GRID_SIZE
+                    font_size = FONT_GRID_SIZE,
+                    on_press = self.view_file
                     )
+            button.id = file.name
             self.ids.files_grid.add_widget(button)
  
+    def view_file(self,instance):
+        print(instance.id)
 
     def return_project(self):
         self.manager.transition.direction = 'right'

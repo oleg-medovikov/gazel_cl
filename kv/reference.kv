@@ -1,7 +1,7 @@
 <ReferenceUI>:
 	BoxLayout:
 		orientation: 'vertical'
-
+		spacing: cm(1)
 		Label:
 			id: r_name
 			font_size: root.font_text_size
@@ -16,6 +16,9 @@
 			background:  128, 128, 128, 1
 			do_scroll_x: False
 			do_scroll_y: True
+			size_hint_x: None
+			width: dp(0.8*root.width)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			bar_color: 5, 10, 15, .8
 			bar_inactive_color: 5, 20, 10, .5
 			scroll_type: ['bars']
@@ -24,7 +27,6 @@
 				height: self.minimum_height
 				id: files_grid
 				spacing: "5dp", "5dp"
-				padding: ("20dp", "0dp", "0dp", "20dp")
 				cols:1
 				row_force_default: True
 				row_default_height: cm(1.5)

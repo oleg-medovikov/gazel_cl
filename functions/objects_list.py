@@ -37,15 +37,19 @@ def objects_list():
     if req.json() is None and len(FILES_CLIENT) == 0 :
         FILES_LIST.clear()
         f = File()
-        f.name = 'Файлов нет'
+        f.id = ''
+        f.name = ''
+        f.type = 'Файлов нет'
         f.color = 'grey'
         FILES_LIST.append(f)
     elif req.json() is None and len(FILES_CLIENT) != 0:
         FILES_LIST.clear()
         for file in FILES_CLIENT:
             f = File()
+            f.id = ''
             f.name = file.name
             f.path = file
+            f.type = 'Не загружен в базу' 
             f.color = 'red'
             FILES_LIST.append(f) 
 
