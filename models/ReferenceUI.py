@@ -21,6 +21,11 @@ class ReferenceUI(Screen):
 
         objects_list()
         
+        if len(FILES_LIST) == 0:
+            self.ids.r_name.text += '\nУ данного обозначения еще нет файлов'
+        else:
+            self.ids.r_name.text += '\nФайлы данного обозначения:'
+        
         self.update_files_grid()
         
 
@@ -45,7 +50,7 @@ class ReferenceUI(Screen):
             if file.type == 'Не загружен в базу':
                 res = objects_create(FILES_LIST.index(file))
                 #print(res)
-            break
+
     def return_project(self):
         self.manager.transition.direction = 'right'
         self.manager.current = 'ProjectUI'
