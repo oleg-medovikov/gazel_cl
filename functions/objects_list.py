@@ -27,7 +27,7 @@ def objects_list():
     def find_file(NAME):
         for file in FILES_CLIENT:
             if file.name == NAME:
-                FILES_CLIENT.drop(file)
+                FILES_CLIENT.remove(file)
                 return True
         return False
 
@@ -70,7 +70,7 @@ def objects_list():
                     f.name = file['o_file_name']
                     f.path = PATH / file['o_file_name']
                     f.type = 'не требует синхронизации'
-                    f.color = 'Purple'
+                    f.color = 'purple'
                     FILES_LIST.append(f)
                 else:
                     f = File()
@@ -78,7 +78,7 @@ def objects_list():
                     f.name = file['o_file_name']
                     f.path = PATH / file['o_file_name']
                     f.type = 'Готов к обновлению'
-                    f.color = 'Orange'
+                    f.color = 'orange'
                     FILES_LIST.append(f)
             else:
                 "если не найден"
