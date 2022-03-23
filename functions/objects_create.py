@@ -8,7 +8,6 @@ from value import HEADERS, VIEW_PROJECT, VIEW_REFERENCE, \
 from config import ROOT, get_hash_md5
 
 def objects_create(INDEX):
-    
 
     url = DATABASE_URL + 'create_object'
     value = dict(
@@ -17,10 +16,8 @@ def objects_create(INDEX):
             FILE_NAME  = FILES_LIST[INDEX].name
             )
 
-    print(value)
-
     file = {'file': open(FILES_LIST[INDEX].path,'rb')}
 
     req = requests.post(url, headers=HEADERS, data=value, files=file)
 
-    print(req.text)
+    return req.json()

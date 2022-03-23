@@ -6,6 +6,6 @@ class File():
     path  : StringProperty('')
     type  : StringProperty('')
     color : StringProperty('')
-    
+     
 
 FILES_LIST = []

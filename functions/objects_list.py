@@ -22,7 +22,7 @@ def objects_list():
         os.makedirs(PATH)
         FILES_CLIENT = []    
     else:
-        FILES_CLIENT = list(PATH.glob('*.*'))
+        FILES_CLIENT = list(PATH.glob('[!.!~]*'))
 
     def find_file(NAME):
         for file in FILES_CLIENT:
@@ -54,7 +54,7 @@ def objects_list():
             f = File()
             f.id = file['o_id']
             f.name = file['o_file_name']
-            f.path = ''
+            f.path = PATH / file['o_file_name']
             f.type = 'Готов к загрузке'
             f.color = 'green'
             FILES_LIST.append(f)
