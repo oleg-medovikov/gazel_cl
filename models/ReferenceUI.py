@@ -2,7 +2,9 @@ from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window
 
 from kivy.uix.button import Button
+from kivy.uix.label import Label
 
+import datetime 
 from config import BIG_WINDOW, FONT_TEXT_SIZE, FONT_GRID_SIZE
 from value import VIEW_REFERENCE, FILES_LIST
 from functions import objects_list, objects_create
@@ -22,12 +24,24 @@ class ReferenceUI(Screen):
         objects_list()
         
         if len(FILES_LIST) == 0:
-            self.ids.r_name.text += '\nУ данного обозначения еще нет файлов'
+            self.ids.r_name.text += '\n\nУ данного обозначения ещё нет файлов'
         else:
-            self.ids.r_name.text += '\nФайлы данного обозначения:'
+            self.ids.r_name.text += '\n\nФайлы данного обозначения:'
         
         self.update_files_grid()
-        
+        self.update_log_grid('Прочтены файлы в директории и базе')
+
+    def update_log_grid(self, LOG):
+        "Обновляем список событий"
+        label = Label(
+                text = datetime.datetime.now().strftime('%H:%M:%S') +'   '+ LOG,
+                font_size = FONT_GRID_SIZE,
+                text_size =  [0.8*self.size[0] - 20, self.size[1]],
+                halign = 'left',
+                valign = 'middle'
+                )
+        self.ids.log_grid.add_widget(label)
+        self.ids.log_scroll.scroll_to(label)
 
     def update_files_grid(self):
         "обновляет список доступных файлов"
@@ -37,6 +51,9 @@ class ReferenceUI(Screen):
                     text = file.name +'   '+ file.type,
                     background_color = file.color,
                     font_size = FONT_GRID_SIZE,
+                    text_size =  [0.8*self.size[0] - 20, self.size[1]],
+                    halign = 'left',
+                    valign = 'middle',
                     on_press = self.view_file
                     )
             button.id = file.name
@@ -49,7 +66,6 @@ class ReferenceUI(Screen):
         for file in FILES_LIST:
             if file.type == 'Не загружен в базу':
                 res = objects_create(FILES_LIST.index(file))
-                #print(res)
 
     def return_project(self):
         self.manager.transition.direction = 'right'

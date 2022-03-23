@@ -69,7 +69,7 @@ def objects_list():
                     f.id = file['o_id']
                     f.name = file['o_file_name']
                     f.path = PATH / file['o_file_name']
-                    f.type = 'не требует синхронизации'
+                    f.type = 'Не требует синхронизации'
                     f.color = 'purple'
                     FILES_LIST.append(f)
                 else:

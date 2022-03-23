@@ -13,7 +13,6 @@
 	
 
 		ScrollView:
-			background:  128, 128, 128, 1
 			do_scroll_x: False
 			do_scroll_y: True
 			size_hint_x: None
@@ -22,16 +21,48 @@
 			bar_color: 5, 10, 15, .8
 			bar_inactive_color: 5, 20, 10, .5
 			scroll_type: ['bars']
+			canvas.before:
+				Color:
+					rgba: 0.42, 0.42, 0.42, 1
+				Rectangle:
+					size: self.size
+					pos: self.pos
 			GridLayout:
 				size_hint_y: None
 				height: self.minimum_height
 				id: files_grid
+				padding: "5dp"
 				spacing: "5dp", "5dp"
 				cols:1
 				row_force_default: True
 				row_default_height: cm(1.5)
 
-		BoxLayout:
+		ScrollView:
+			id: log_scroll
+			do_scroll_x: False
+			do_scroll_y: True
+			size_hint: None,None
+			width: dp(0.8*root.width)
+			height: cm(2)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			bar_color: 5, 10, 15, .8
+			bar_inactive_color: 5, 20, 10, .5
+			scroll_type: ['bars']
+			canvas.before:
+				Color:
+					rgba: 0.42, 0.42, 0.42, 1
+				Rectangle:
+					size: self.size
+					pos: self.pos
+			GridLayout:
+				size_hint_y: None
+				height: self.minimum_height
+				id: log_grid
+				padding: "5dp"
+				spacing: "5dp", "5dp"
+				cols:1
+				row_force_default: True
+				row_default_height: cm(0.5)
 
 		BoxLayout:
 			orientation: 'horizontal'
