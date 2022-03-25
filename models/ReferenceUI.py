@@ -4,10 +4,10 @@ from kivy.core.window import Window
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 
-import datetime 
+import datetime #, multiprocessing 
 from config import BIG_WINDOW, FONT_TEXT_SIZE, FONT_GRID_SIZE
 from value import VIEW_REFERENCE, FILES_LIST
-from functions import objects_list, objects_create, objects_load
+from functions import objects_list, objects_create, objects_load, objects_update
 
 
 class ReferenceUI(Screen):
@@ -30,7 +30,7 @@ class ReferenceUI(Screen):
         
         self.update_files_grid()
         self.update_log_grid('Прочтены файлы в директории и базе', 'white')
-
+    
     def update_log_grid(self, LOG, COLOR):
         "Обновляем список событий"
         label = Label(
@@ -49,36 +49,58 @@ class ReferenceUI(Screen):
         self.ids.files_grid.clear_widgets()
         for file in  FILES_LIST:
             button = Button(
-                    text = file.name +'   '+ file.type,
+                    text = file.name,
                     background_color = file.color,
                     font_size = FONT_GRID_SIZE,
-                    text_size =  [0.75*self.size[0], self.size[1]],
+                    text_size =  [0.45*self.size[0], self.size[1]],
                     halign = 'left',
                     valign = 'middle',
                     on_press = self.view_file
                     )
             button.id = file.name
             self.ids.files_grid.add_widget(button)
+
+            label = Label(
+                    font_size = FONT_GRID_SIZE,
+                    size_hint_x = None,
+                    width =  '4cm',
+                    text = file.type,
+                    )
+            self.ids.files_grid.add_widget(label)
  
     def view_file(self,instance):
         pass
 
+#    def start_synchronization(self):
+#        multiprocessing.Process(target=self.synchronization).start()
+
     def synchronization(self):
+        self.ids.load_files.background_color = 'green'
+        self.update_log_grid('Начинаю синхронизацию', 'white')
         for file in FILES_LIST:
-            if file.type == 'Не загружен в базу':
+            
+            if   file.type == 'Новый':
                 res = objects_create(FILES_LIST.index(file))
-            elif file.type == 'Готов к загрузке':
+            
+            elif file.type == 'Скачать':
                 res = objects_load(FILES_LIST.index(file))
-            elif file.type == 'Не требует синхронизации':
+            
+            elif file.type == 'Изменён':
+                res = objects_update(FILES_LIST.index(file))
+            
+            elif file.type == 'Актуален':
                 continue
 
             if 'error' in res:
                 self.update_log_grid(file.name + ' ' + res['error'], 'darkred')
             elif "message" in res:
                 self.update_log_grid(file.name + ' ' + res['message'], 'white')
- 
+
         objects_list()
         self.update_files_grid()
+        self.update_log_grid('Закончил синхронизацию', 'white')
+        self.ids.load_files.background_normal = ''
+        self.ids.load_files.background_color = 'grey'
 
     def return_project(self):
         self.manager.transition.direction = 'right'

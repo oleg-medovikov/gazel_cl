@@ -44,7 +44,7 @@ def objects_list():
             f = File()
             f.name = file.name
             f.path = file
-            f.type = 'Не загружен в базу'
+            f.type = 'Новый'
             f.color = 'red'
             FILES_LIST.append(f) 
     
@@ -55,7 +55,7 @@ def objects_list():
             f.id = file['o_id']
             f.name = file['o_file_name']
             f.path = PATH / file['o_file_name']
-            f.type = 'Готов к загрузке'
+            f.type = 'Скачать'
             f.color = 'green'
             FILES_LIST.append(f)
 
@@ -69,7 +69,7 @@ def objects_list():
                     f.id = file['o_id']
                     f.name = file['o_file_name']
                     f.path = PATH / file['o_file_name']
-                    f.type = 'Не требует синхронизации'
+                    f.type = 'Актуален'
                     f.color = 'purple'
                     FILES_LIST.append(f)
                 else:
@@ -77,7 +77,7 @@ def objects_list():
                     f.id = file['o_id']
                     f.name = file['o_file_name']
                     f.path = PATH / file['o_file_name']
-                    f.type = 'Готов к обновлению'
+                    f.type = 'Изменён'
                     f.color = 'orange'
                     FILES_LIST.append(f)
             else:
@@ -86,7 +86,7 @@ def objects_list():
                 f.id = file['o_id']
                 f.name = file['o_file_name']
                 f.path = PATH / file['o_file_name']
-                f.type = 'Готов к загрузке'
+                f.type = 'Скачать'
                 f.color = 'green'
                 FILES_LIST.append(f)
 
@@ -95,7 +95,7 @@ def objects_list():
             f.id = ''
             f.name = file.name
             f.path = file
-            f.type = 'Не загружен в базу'
+            f.type = 'Новый'
             f.color = 'red'
             FILES_LIST.append(f)
     

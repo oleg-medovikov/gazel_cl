@@ -18,3 +18,4 @@ from .reference_name   import reference_name
 from .objects_list     import objects_list 
 from .objects_create   import objects_create
 from .objects_load  import objects_load
+from .objects_update import objects_update
