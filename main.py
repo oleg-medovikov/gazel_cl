@@ -1,5 +1,5 @@
 import platform, os, sys
-
+from pathlib import Path
 
 #os.environ['KIVY_NO_CONSOLELOG'] = '1'
 
@@ -31,21 +31,14 @@ if pi:
 httplib2.Http()
 #====================================
 
-Builder.load_string(f"""
-{open('kv/login.kv',            'r',  encoding='utf-8').read()}
-{open('kv/mainscreen.kv',       'r',  encoding='utf-8').read()}
-{open('kv/users.kv',            'r',  encoding='utf-8').read()}
-{open('kv/new_user.kv',         'r',  encoding='utf-8').read()}
-{open('kv/view_user.kv',        'r',  encoding='utf-8').read()}
-{open('kv/new_project.kv',      'r',  encoding='utf-8').read()}
-{open('kv/project.kv',          'r',  encoding='utf-8').read()}
-{open('kv/project_team.kv',     'r',  encoding='utf-8').read()}
-{open('kv/add_team_user.kv',    'r',  encoding='utf-8').read()}
-{open('kv/remove_team_user.kv', 'r',  encoding='utf-8').read()}
-{open('kv/create_reference.kv', 'r',  encoding='utf-8').read()}
-{open('kv/reference.kv',        'r',  encoding='utf-8').read()}
-""")
+KV_PATH = Path('.', 'kv')
+KV_FILES = list(KV_PATH.glob('*.kv'))
 
+STRING = ''
+for file in KV_FILES:
+    STRING += open(file, 'r', encoding='utf-8').read()
+
+Builder.load_string(STRING)
 
 class Gazel_cl(App):
     def build(self):
@@ -63,7 +56,6 @@ class Gazel_cl(App):
         sm.add_widget(CreateReferenceUI (name = 'CreateReferenceUI'))
         sm.add_widget(ReferenceUI       (name = 'ReferenceUI'))
         return sm
-    
     
 if __name__ == '__main__':
     app = Gazel_cl()
