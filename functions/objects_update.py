@@ -20,5 +20,4 @@ def objects_update(INDEX):
 
     req = requests.put(url, headers=HEADERS, data=value, files=file)
     
-    print(req.text)
     return req.json()

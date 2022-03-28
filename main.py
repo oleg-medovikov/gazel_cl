@@ -14,11 +14,14 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.resources import resource_add_path, resource_find
 
-
 from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI, NewProjectUI
 from models import ProjectUI, ProjectTeamUI, AddTeamUserUI, RemoveTeamUserUI
 from models import CreateReferenceUI, ReferenceUI
 
+from config import SMALL_WINDOW
+from kivy.config import Config
+Config.set('graphics', 'width', '600')
+Config.set('graphics', 'height', '700')
 
 # На случай если есть прокси ======
 import httplib2
@@ -62,3 +65,4 @@ if __name__ == '__main__':
     if hasattr(sys, '_MEIPASS'):
         resource_add_path(os.path.join(sys._MEIPASS))
     app.run()
+

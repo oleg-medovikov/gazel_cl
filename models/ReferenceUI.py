@@ -4,10 +4,12 @@ from kivy.core.window import Window
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 
-import datetime #, multiprocessing 
+import datetime #, multiprocessing
+from pathlib import Path
 from config import BIG_WINDOW, FONT_TEXT_SIZE, FONT_GRID_SIZE
 from value import VIEW_REFERENCE, FILES_LIST
-from functions import objects_list, objects_create, objects_load, objects_update
+from functions import objects_list, objects_create, \
+        objects_load, objects_update, objects_delete 
 
 
 class ReferenceUI(Screen):
@@ -15,6 +17,8 @@ class ReferenceUI(Screen):
 
     font_text_size = FONT_TEXT_SIZE
     width = BIG_WINDOW[0]
+
+    CLOSE_IMG = Path('.', 'img', 'close.png')
 
     def on_enter(self):
         Window.size=BIG_WINDOW
@@ -52,7 +56,7 @@ class ReferenceUI(Screen):
                     text = file.name,
                     background_color = file.color,
                     font_size = FONT_GRID_SIZE,
-                    text_size =  [0.45*self.size[0], self.size[1]],
+                    text_size =  [0.375*self.size[0], self.size[1]],
                     halign = 'left',
                     valign = 'middle',
                     on_press = self.view_file
@@ -67,9 +71,33 @@ class ReferenceUI(Screen):
                     text = file.type,
                     )
             self.ids.files_grid.add_widget(label)
- 
+
+            button = Button(
+                    background_normal = self.CLOSE_IMG.as_posix(),
+                    size_hint_x = None,
+                    width = '1.5cm',
+                    on_press = self.delete_file
+                    )
+
+            button.id = file.id
+            self.ids.files_grid.add_widget(button)
+
     def view_file(self,instance):
-        pass
+        objects_list()
+        self.update_files_grid()
+    
+    def delete_file(self,instance):
+        if instance.id == '':
+            return 1
+        res = objects_delete(instance.id)
+
+        if 'error' in res:
+            self.update_log_grid(res['error'], 'darkred')
+        elif "message" in res:
+            self.update_log_grid(res['message'], 'white')
+        
+        objects_list()
+        self.update_files_grid()
 
 #    def start_synchronization(self):
 #        multiprocessing.Process(target=self.synchronization).start()

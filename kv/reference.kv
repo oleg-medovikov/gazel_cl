@@ -21,6 +21,7 @@
 			bar_color: 5, 10, 15, .8
 			bar_inactive_color: 5, 20, 10, .5
 			scroll_type: ['bars']
+			on_scroll_move: root.new_scroll
 			canvas.before:
 				Color:
 					rgba: 0.42, 0.42, 0.42, 1
@@ -33,7 +34,7 @@
 				id: files_grid
 				padding: "5dp"
 				spacing: "5dp", "5dp"
-				cols: 2
+				cols: 3
 				row_force_default: True
 				row_default_height: cm(1.5)
 

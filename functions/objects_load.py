@@ -13,15 +13,13 @@ def objects_load(INDEX):
             R_ID = str(VIEW_REFERENCE.r_id),
             O_ID = FILES_LIST[INDEX].id
             )
-
-    req = requests.get(url, headers=HEADERS, json=value)
-
-    if 'error' in req.text:
-        return req.json()
-    
-    string = req.json()['o_binary'].encode('utf-8')
-
-    with open( FILES_LIST[INDEX].path, "wb") as file:
-        file.write(base64.decodebytes( string ) )
-
-    return {'message' : 'Файл успешно загружен'}
+    try:
+        with requests.get(url, headers=HEADERS, json=value, stream=True) as req:
+            with open(FILES_LIST[INDEX].path, 'wb') as file:
+                for chunk in req.iter_content(chunk_size=8192): 
+                    file.write(chunk)
+    except:
+        if 'error' in req.text:
+            return req.json()
+    else:
+        return {'message' : 'Файл успешно загружен'}
