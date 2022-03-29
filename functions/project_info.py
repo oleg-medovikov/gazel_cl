@@ -11,6 +11,7 @@ def project_info(name : str):
    
     if not "error" in req.text:
         res = req.json()
+        VIEW_PROJECT.p_id = res["p_id"]
         VIEW_PROJECT.p_name = res["p_name"]
         VIEW_PROJECT.p_description = res["p_description"]
 

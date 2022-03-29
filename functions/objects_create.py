@@ -19,5 +19,15 @@ def objects_create(INDEX):
     file = {'file': open(FILES_LIST[INDEX].path,'rb')}
 
     req = requests.post(url, headers=HEADERS, data=value, files=file)
+    
+    
+    if "message" in req.text:
+        url = DATABASE_URL + 'create_log'
+        value = dict(
+                P_ID = VIEW_PROJECT.p_id,
+                R_ID = VIEW_REFERENCE.r_id,
+                EVENT = f"Загружен в базу {FILES_LIST[INDEX].name}"
+                )
+        r = requests.post(url, headers=HEADERS, json=value)
 
     return req.json()

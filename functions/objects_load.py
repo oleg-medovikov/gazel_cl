@@ -22,4 +22,14 @@ def objects_load(INDEX):
         if 'error' in req.text:
             return req.json()
     else:
+
+        url = DATABASE_URL + 'create_log'
+        value = dict(
+                P_ID = VIEW_PROJECT.p_id,
+                R_ID = VIEW_REFERENCE.r_id,
+                EVENT = f"Загружен локально {FILES_LIST[INDEX].name}"
+                )
+        r = requests.post(url, headers=HEADERS, json=value)
+
+
         return {'message' : 'Файл успешно загружен'}

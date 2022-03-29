@@ -53,8 +53,10 @@ class ReferenceUI(Screen):
         self.ids.files_grid.clear_widgets()
         for file in  FILES_LIST:
             button = Button(
-                    text = file.name,
+                    text = f'[color=ffffff]{file.name}[/color]',
+                    markup=True,
                     background_color = file.color,
+                    opacity = '0.75',
                     font_size = FONT_GRID_SIZE,
                     text_size =  [0.375*self.size[0], self.size[1]],
                     halign = 'left',
@@ -66,9 +68,11 @@ class ReferenceUI(Screen):
 
             label = Label(
                     font_size = FONT_GRID_SIZE,
+                    markup=True,
                     size_hint_x = None,
                     width =  '4cm',
-                    text = file.type,
+                    text = f'[color=ffffff]{file.type}[/color]',
+                    #text = file.type,
                     )
             self.ids.files_grid.add_widget(label)
 

@@ -2,7 +2,7 @@ import requests
 
 from config import DATABASE_URL
 
-from value import HEADERS, USER
+from value import HEADERS, USER, VIEW_PROJECT
 
 
 def project_add_user(project : str, username : str, access: int) -> str:
@@ -16,8 +16,16 @@ def project_add_user(project : str, username : str, access: int) -> str:
     
     req = requests.post(url, headers=HEADERS, json=values )
 
-    if not "error" in req.text:
+    if "message" in req.text:
+        url = DATABASE_URL + 'create_log'
+        value = dict(
+                P_ID = VIEW_PROJECT.p_id,
+                EVENT = f"Добавлен в команду {project} пользователь {username} с уровнем прав {access}"
+                )
+        r = requests.post(url, headers=HEADERS, json=value)
+
         return req.json()["message"]
-    else:
+
+    elif "error" in req.text:
         return req.json()["error"]
 
