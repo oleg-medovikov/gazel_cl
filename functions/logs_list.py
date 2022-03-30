@@ -22,12 +22,13 @@ def logs_list(ID) -> list:
                 VIEW_LOGS_DATES.append(log["date"])
             
             LOG = Log()
-            LOG.p_name = log["p_name"]
-            LOG.r_name = log["r_name"]
-            LOG.r_code = log["r_code"]
-            LOG.user   = log["user"]
-            LOG.date   = log["date"]
-            LOG.time   = log["time"]
-            LOG.event  = log["event"]
+            LOG.p_name   = log["p_name"]
+            LOG.r_name   = log["r_name"]
+            LOG.r_code   = log["r_code"]
+            LOG.username = log["username"]
+            LOG.user     = log["user"]
+            LOG.date     = log["date"]
+            LOG.time     = log["time"]
+            LOG.event    = log["event"]
             
             VIEW_LOGS.append(LOG)

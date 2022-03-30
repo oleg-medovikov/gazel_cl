@@ -65,32 +65,32 @@ class LogsUI(Screen):
                 TIME = Label(
                     font_size = FONT_SIZE,
                      markup=True,
-                     size_hint_x = None,
-                     width = 75,
-                     text = f'[color=ffffff]{log.time}[/color]',
+                     text = f'[color=000000][b]{log.time[:-3]}[/b][/color]',
+                     size_hint = (0.14,1),
+                     halign = 'left'
                         )
                 USER = Label(
                     font_size = FONT_SIZE,
                     markup=True,
-                    size_hint_x = None,
-                    width = 120,
-                    text = f'[color=ffffff]{log.user}[/color]',
+                    size_hint = (0.30,1),
+                    halign = 'left',
+                    text = f'[color=000000][b]{log.username}[/b]\n[/color][color=ffffff]{log.user}[/color]',
                         )
                 REF = Label(
                     font_size = FONT_SIZE,
                     markup=True,
-                    size_hint_x = None,
-                    width = 100,
+                    size_hint = (0.2,1),
+                    halign = 'left',
                     text = f'[color=ffffff]{log.r_code}[/color]',
                         )
                 EVENT = Label(
                     font_size = FONT_SIZE,
-                    size_hint_x = None,
                     markup=True,
-                    width = 140,
+                    size_hint = (0.55,1),
+                    text_size = (0.55*self.width, self.height),
+                    halign = 'left',
+                    valign = "middle",
                     text = f'[color=ffffff]{log.event}[/color]',
-                    text_size = (140,120),
-                    valign = "middle"
                         )
                 self.ids.logs_grid.add_widget(TIME)
                 self.ids.logs_grid.add_widget(USER)
