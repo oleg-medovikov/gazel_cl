@@ -10,3 +10,4 @@ from .AddTeamUserUI import AddTeamUserUI
 from .RemoveUserFromTeamUI import RemoveTeamUserUI
 from .CreateReferenceUI import CreateReferenceUI
 from .ReferenceUI import ReferenceUI
+from .LogsUI import LogsUI

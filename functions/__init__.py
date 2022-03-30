@@ -20,3 +20,4 @@ from .objects_create   import objects_create
 from .objects_load  import objects_load
 from .objects_update import objects_update
 from .objects_delete import objects_delete
+from .logs_list import logs_list 

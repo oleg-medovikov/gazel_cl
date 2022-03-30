@@ -3,7 +3,8 @@ from kivy.core.window import Window
 from kivy.uix.button import Button
 from value import VIEW_PROJECT, VIEW_REFERENCE
 
-from functions import reference_level1, reference_level2, reference_level3, reference_name
+from functions import reference_level1, reference_level2, \
+        reference_level3, reference_name
 from config import FONT_GRID_SIZE, SMALL_WINDOW, BIG_WINDOW, \
                    FONT_TEXT_SIZE
 
@@ -92,6 +93,10 @@ class ProjectUI(Screen):
         Window.size = SMALL_WINDOW
         self.manager.transition.direction = 'left'
         self.manager.current = 'CreateReferenceUI'
+    
+    def view_logs(self):
+        self.manager.transition.direction = 'down'
+        self.manager.current = 'LogsUI'
 
     def return_main(self):
         self.ids.level1.clear_widgets()

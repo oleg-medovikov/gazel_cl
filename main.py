@@ -16,7 +16,7 @@ from kivy.resources import resource_add_path, resource_find
 
 from models import LoginUI, MainScreen, UsersUI, NewUserUI, ViewUserUI, NewProjectUI
 from models import ProjectUI, ProjectTeamUI, AddTeamUserUI, RemoveTeamUserUI
-from models import CreateReferenceUI, ReferenceUI
+from models import CreateReferenceUI, ReferenceUI, LogsUI
 
 from config import SMALL_WINDOW
 from kivy.config import Config
@@ -58,6 +58,7 @@ class Gazel_cl(App):
         sm.add_widget(RemoveTeamUserUI  (name = 'RemoveTeamUserUI'))
         sm.add_widget(CreateReferenceUI (name = 'CreateReferenceUI'))
         sm.add_widget(ReferenceUI       (name = 'ReferenceUI'))
+        sm.add_widget(LogsUI            (name = 'LogsUI'))
         return sm
     
 if __name__ == '__main__':

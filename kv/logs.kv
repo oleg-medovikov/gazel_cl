@@ -1,50 +1,40 @@
-<ReferenceUI>:
+<LogsUI>:
 	BoxLayout:
 		orientation: 'vertical'
-		spacing: cm(1)
+		padding: cm(1.5)
+
 		Label:
-			id: r_name
+			id: description
 			font_size: root.font_text_size
 			size_hint: None, None
+			height: cm(2) 
 			width: dp(0.8*root.width)
-			height: cm(4)
-			text_size: dp(0.8*root.width),cm(4)
+			text_size: dp(0.8*root.width),cm(2)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			valign: "top"
 	
-
 		ScrollView:
-			do_scroll_x: False
-			do_scroll_y: True
-			size_hint_x: None
-			width: dp(0.8*root.width)
-			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+			background:  0, 0, 0, 1
+			size_hint_y: None
+			height: cm(1.5)
+			do_scroll_x: True
+			do_scroll_y: False
 			bar_color: 5, 10, 15, .8
 			bar_inactive_color: 5, 20, 10, .5
 			scroll_type: ['bars']
-			canvas.before:
-				Color:
-					rgba: 0.42, 0.42, 0.42, 1
-				Rectangle:
-					size: self.size
-					pos: self.pos
 			GridLayout:
 				size_hint_y: None
 				height: self.minimum_height
-				id: files_grid
-				padding: "5dp"
+				id: dates_grid
 				spacing: "5dp", "5dp"
-				cols: 3
+				padding: ("0dp", "0dp", "0dp", "20dp")
 				row_force_default: True
 				row_default_height: cm(1.5)
-
+		
 		ScrollView:
-			id: log_scroll
+			background:  0, 0, 0, 1
 			do_scroll_x: False
 			do_scroll_y: True
-			size_hint: None,None
-			width: dp(0.8*root.width)
-			height: cm(2)
-			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			bar_color: 5, 10, 15, .8
 			bar_inactive_color: 5, 20, 10, .5
 			scroll_type: ['bars']
@@ -57,12 +47,12 @@
 			GridLayout:
 				size_hint_y: None
 				height: self.minimum_height
-				id: log_grid
-				padding: "5dp"
+				id: logs_grid
 				spacing: "5dp", "5dp"
-				cols:1
+				padding: ("5dp", "0dp", "0dp", "5dp")
+				cols:4
 				row_force_default: True
-				row_default_height: cm(0.5)
+				row_default_height: 90
 
 		BoxLayout:
 			orientation: 'horizontal'
@@ -78,6 +68,6 @@
 				text: 'назад'
 				on_press: root.return_project()
 			Button:
-				id: load_files
-				text: 'Синхронизация'
-				on_press: root.synchronization()
+				id: refresh
+				text: 'Обновить'
+				on_press: root.refresh()
