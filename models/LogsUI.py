@@ -2,6 +2,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.core.window import Window
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.metrics import cm
 
 from value import VIEW_PROJECT, VIEW_LOGS, VIEW_LOGS_DATES
 from functions import logs_list
@@ -14,8 +15,9 @@ class LogsUI(Screen):
     font_text_size = FONT_TEXT_SIZE
     width = BIG_WINDOW[0]
 
-    def on_enter(self):
+    def on_pre_enter(self):
         Window.size=BIG_WINDOW
+        Window.minimum_width, Window.minimum_height = Window.size
 
         DESCRIPTION = f"Проект {VIEW_PROJECT.p_name}\n"
         self.ids.description.text = DESCRIPTION
@@ -58,44 +60,61 @@ class LogsUI(Screen):
     def update_logs_grid(self, DATE):
         "Обновляем таблицу с логами за дату" 
         self.ids.logs_grid.clear_widgets()
-        FONT_SIZE = '0.4cm'
+        FONT_SIZE = '0.375cm'
 
         for log in VIEW_LOGS:
             if log.date == DATE:
                 TIME = Label(
                     font_size = FONT_SIZE,
-                     markup=True,
-                     text = f'[color=000000][b]{log.time[:-3]}[/b][/color]',
-                     size_hint = (0.14,1),
-                     halign = 'left'
-                        )
+                    markup=True,
+                    text = f'[color=000000][b]{log.time[:-3]}[/b][/color]',
+                    size_hint = (None,0.1),
+                    width = cm(1.5),
+                    text_size = (cm(1.5), cm(1.5)),
+                    halign = "center",
+                    valign = "middle",
+                         )
                 USER = Label(
                     font_size = FONT_SIZE,
                     markup=True,
-                    size_hint = (0.30,1),
+                    size_hint = (None,1),
+                    width = cm(3.5),
+                    text_size = (cm(3.5), cm(1.5)),
                     halign = 'left',
+                    valign = "top",
                     text = f'[color=000000][b]{log.username}[/b]\n[/color][color=ffffff]{log.user}[/color]',
                         )
-                REF = Label(
-                    font_size = FONT_SIZE,
-                    markup=True,
-                    size_hint = (0.2,1),
-                    halign = 'left',
-                    text = f'[color=ffffff]{log.r_code}[/color]',
-                        )
+
                 EVENT = Label(
                     font_size = FONT_SIZE,
                     markup=True,
-                    size_hint = (0.55,1),
-                    text_size = (0.55*self.width, self.height),
+                    size_hint = (None,1),
+                    width = cm(5),
+                    text_size = (cm(4.8), cm(1.5)),
                     halign = 'left',
-                    valign = "middle",
+                    valign = "top",
                     text = f'[color=ffffff]{log.event}[/color]',
+                        )
+
+                if log.r_code is None:
+                    REF_TEXT = ''
+                else:
+                    REF_TEXT = log.r_code
+
+                REF = Label(
+                    font_size = FONT_SIZE,
+                    markup=True,
+                    size_hint = (None,1),
+                    width = cm(2),
+                    text_size = (cm(2), cm(1.5)),
+                    halign = 'left',
+                    valign = "top",
+                    text = f'[color=ffffff]{REF_TEXT}[/color]',
                         )
                 self.ids.logs_grid.add_widget(TIME)
                 self.ids.logs_grid.add_widget(USER)
-                self.ids.logs_grid.add_widget(REF)
                 self.ids.logs_grid.add_widget(EVENT)
+                self.ids.logs_grid.add_widget(REF)
 
     def return_project(self):
         self.manager.transition.direction = 'up'

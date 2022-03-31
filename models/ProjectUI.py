@@ -14,9 +14,11 @@ class ProjectUI(Screen):
     font_text_size = FONT_TEXT_SIZE
     width = BIG_WINDOW[0]
 
-    def on_enter(self):
+    def on_pre_enter(self):
         Window.size=BIG_WINDOW
+        Window.minimum_width, Window.minimum_height = Window.size
 
+    def on_enter(self):
         DESCRIPTION = f"Проект {VIEW_PROJECT.p_name}\n"
         DESCRIPTION += VIEW_PROJECT.p_description
         

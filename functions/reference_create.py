@@ -26,4 +26,11 @@ def reference_create(
     if "error" in req.text:
         return  req.json()["error"]
     else:
+        url = DATABASE_URL + 'create_log'
+        value = dict(
+                P_ID = VIEW_PROJECT.p_id,
+                EVENT = f"Создано обозначение {LEVEL_1 +'_'+LEVEL_2 +'_'+ LEVEL_3}"
+                )
+        r = requests.post(url, headers=HEADERS, json=value)
+
         return  req.json()["message"]

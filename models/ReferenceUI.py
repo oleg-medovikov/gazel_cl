@@ -20,9 +20,11 @@ class ReferenceUI(Screen):
 
     CLOSE_IMG = Path('.', 'img', 'close.png')
 
-    def on_enter(self):
+    def  on_pre_enter(self):
         Window.size=BIG_WINDOW
+        Window.minimum_width, Window.minimum_height = Window.size
 
+    def on_enter(self):
         self.ids.r_name.text = VIEW_REFERENCE.r_name
 
         objects_list()

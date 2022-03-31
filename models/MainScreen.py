@@ -14,8 +14,11 @@ class MainScreen(Screen):
     font_text_size = FONT_TEXT_SIZE
     width = SMALL_WINDOW[0]
 
-    def on_enter(self):
+    def on_pre_enter(self):
         Window.size=SMALL_WINDOW
+        Window.minimum_width, Window.minimum_height = Window.size
+       
+    def on_enter(self):
         self.ids.hello.text = get_hello_start() +  USER.first_name + '.' \
                 + "\nВыберите из доступных проектов:" 
 

@@ -2,6 +2,7 @@
 	BoxLayout:
 		orientation: 'vertical'
 		padding: cm(1.5)
+		spacing: cm(0.4)
 
 		Label:
 			id: description
@@ -21,13 +22,15 @@
 			do_scroll_y: False
 			bar_color: 5, 10, 15, .8
 			bar_inactive_color: 5, 20, 10, .5
+			size_hint_x: None
+			width: dp(0.8*root.width)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			scroll_type: ['bars']
 			GridLayout:
 				size_hint_y: None
 				height: self.minimum_height
 				id: dates_grid
 				spacing: "5dp", "5dp"
-				padding: ("0dp", "0dp", "0dp", "20dp")
 				row_force_default: True
 				row_default_height: cm(1.5)
 		
@@ -37,6 +40,9 @@
 			do_scroll_y: True
 			bar_color: 5, 10, 15, .8
 			bar_inactive_color: 5, 20, 10, .5
+			size_hint_x: None
+			width: dp(0.8*root.width)
+			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 			scroll_type: ['bars']
 			canvas.before:
 				Color:
@@ -49,8 +55,9 @@
 				height: self.minimum_height
 				id: logs_grid
 				cols:4
+				padding: (cm(0.1), cm(0.4), cm(0.4), cm(0.4))
 				row_force_default: True
-				row_default_height: cm(2.5)
+				row_default_height: cm(2)
 
 		BoxLayout:
 			orientation: 'horizontal'
