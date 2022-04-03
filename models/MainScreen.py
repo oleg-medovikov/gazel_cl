@@ -16,7 +16,7 @@ class MainScreen(Screen):
 
     def on_pre_enter(self):
         Window.size=SMALL_WINDOW
-        Window.minimum_width, Window.minimum_height = Window.size
+        Window.minimum_width, Window.minimum_height = SMALL_WINDOW
        
     def on_enter(self):
         self.ids.hello.text = get_hello_start() +  USER.first_name + '.' \

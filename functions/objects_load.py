@@ -2,7 +2,7 @@ import requests, os, base64
 
 from config import DATABASE_URL
 
-from value import HEADERS, VIEW_REFERENCE, FILES_LIST
+from value import HEADERS, VIEW_PROJECT, VIEW_REFERENCE, FILES_LIST
 
 
 def objects_load(INDEX):

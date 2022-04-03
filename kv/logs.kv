@@ -16,20 +16,20 @@
 	
 		ScrollView:
 			background:  0, 0, 0, 1
-			size_hint_y: None
-			height: cm(1.5)
+			size_hint: None,None
+			height: cm(3)
+			width: dp(0.8*root.width)
 			do_scroll_x: True
-			do_scroll_y: False
+			do_scroll_y: True
 			bar_color: 5, 10, 15, .8
 			bar_inactive_color: 5, 20, 10, .5
-			size_hint_x: None
-			width: dp(0.8*root.width)
 			pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-			scroll_type: ['bars']
+			scroll_type: ['bars','content']
 			GridLayout:
 				size_hint_y: None
 				height: self.minimum_height
 				id: dates_grid
+				cols: 4
 				spacing: "5dp", "5dp"
 				row_force_default: True
 				row_default_height: cm(1.5)

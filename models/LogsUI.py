@@ -17,7 +17,7 @@ class LogsUI(Screen):
 
     def on_pre_enter(self):
         Window.size=BIG_WINDOW
-        Window.minimum_width, Window.minimum_height = Window.size
+        Window.minimum_width, Window.minimum_height = BIG_WINDOW
 
         DESCRIPTION = f"Проект {VIEW_PROJECT.p_name}\n"
         self.ids.description.text = DESCRIPTION
@@ -33,7 +33,7 @@ class LogsUI(Screen):
     def update_dates_grid(self):
         "Обновляем список кнопочек с датами"
         self.ids.dates_grid.clear_widgets()
-        self.ids.dates_grid.cols = len(VIEW_LOGS_DATES)
+        #self.ids.dates_grid.cols = len(VIEW_LOGS_DATES)
         if len(VIEW_LOGS_DATES) == 0:
             self.ids.description.text += '\nНет логов'
             return 1
@@ -45,7 +45,7 @@ class LogsUI(Screen):
                         text = date,
                         size_hint_x = None,
                         size_hint_y = None,
-                        width = '3.75cm',
+                        width = '3cm',
                         height = '0.75cm',
                         background_color = (0.32,0.32,0.32,1),
                         font_size = FONT_GRID_SIZE,

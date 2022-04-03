@@ -3,8 +3,10 @@ from kivy.core.window import Window
 
 from kivy.uix.button import Button
 from kivy.uix.label import Label
+from kivy.properties import ListProperty, NumericProperty
 
-import datetime #, multiprocessing
+import datetime, threading
+
 from pathlib import Path
 from config import BIG_WINDOW, FONT_TEXT_SIZE, FONT_GRID_SIZE
 from value import VIEW_REFERENCE, FILES_LIST
@@ -20,9 +22,12 @@ class ReferenceUI(Screen):
 
     CLOSE_IMG = Path('.', 'img', 'close.png')
 
+    logi = ListProperty([])
+    logi_len = NumericProperty(0)
+
     def  on_pre_enter(self):
         Window.size=BIG_WINDOW
-        Window.minimum_width, Window.minimum_height = Window.size
+        Window.minimum_width, Window.minimum_height = BIG_WINDOW
 
     def on_enter(self):
         self.ids.r_name.text = VIEW_REFERENCE.r_name
@@ -35,10 +40,16 @@ class ReferenceUI(Screen):
             self.ids.r_name.text += '\n\nФайлы данного обозначения:'
         
         self.update_files_grid()
-        self.update_log_grid('Прочтены файлы в директории и базе', 'white')
+        self.add_log('Прочтены файлы в директории и базе', 'white')
     
-    def update_log_grid(self, LOG, COLOR):
+    def on_logi(self,*args):
         "Обновляем список событий"
+        if len(self.logi) != self.logi_len:
+            self.ids.log_grid.add_widget(self.logi[-1])
+            self.ids.log_scroll.scroll_to(self.logi[-1])
+            self.logi_len = len(self.logi)
+
+    def add_log(self, LOG, COLOR):
         label = Label(
                 text = datetime.datetime.now().strftime('%H:%M:%S') +'   '+ LOG,
                 font_size = FONT_GRID_SIZE,
@@ -47,8 +58,7 @@ class ReferenceUI(Screen):
                 halign = 'left',
                 valign = 'middle'
                 )
-        self.ids.log_grid.add_widget(label)
-        self.ids.log_scroll.scroll_to(label)
+        self.logi.append(label)
 
     def update_files_grid(self):
         "обновляет список доступных файлов"
@@ -98,19 +108,19 @@ class ReferenceUI(Screen):
         res = objects_delete(instance.id)
 
         if 'error' in res:
-            self.update_log_grid(res['error'], 'darkred')
+            self.add_log(res['error'], 'darkred')
         elif "message" in res:
-            self.update_log_grid(res['message'], 'white')
+            self.add_log(res['message'], 'white')
         
         objects_list()
         self.update_files_grid()
 
 #    def start_synchronization(self):
-#        multiprocessing.Process(target=self.synchronization).start()
+#       threading.Thread(target=self.synchronization).start() 
 
     def synchronization(self):
-        self.ids.load_files.background_color = 'green'
-        self.update_log_grid('Начинаю синхронизацию', 'white')
+        self.add_log('Начинаю синхронизацию', 'white')
+
         for file in FILES_LIST:
             
             if   file.type == 'Новый':
@@ -126,15 +136,16 @@ class ReferenceUI(Screen):
                 continue
 
             if 'error' in res:
-                self.update_log_grid(file.name + ' ' + res['error'], 'darkred')
+                self.add_log(file.name + ' ' + res['error'], 'darkred')
             elif "message" in res:
-                self.update_log_grid(file.name + ' ' + res['message'], 'white')
+                self.add_log(file.name + ' ' + res['message'], 'white')
 
         objects_list()
         self.update_files_grid()
-        self.update_log_grid('Закончил синхронизацию', 'white')
-        self.ids.load_files.background_normal = ''
-        self.ids.load_files.background_color = 'grey'
+        self.add_log('Закончил синхронизацию', 'white')
+       # self.ids.load_files.background_normal = ''
+       # self.ids.load_files.background_color = 'grey'
+
 
     def return_project(self):
         self.manager.transition.direction = 'right'

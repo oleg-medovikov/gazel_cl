@@ -16,7 +16,7 @@ class ProjectUI(Screen):
 
     def on_pre_enter(self):
         Window.size=BIG_WINDOW
-        Window.minimum_width, Window.minimum_height = Window.size
+        Window.minimum_width, Window.minimum_height = BIG_WINDOW
 
     def on_enter(self):
         DESCRIPTION = f"Проект {VIEW_PROJECT.p_name}\n"
